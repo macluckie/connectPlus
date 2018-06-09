@@ -1,0 +1,175 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Game
+ *
+ * @ORM\Table(name="game")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GameRepository")
+ */
+class Game
+{
+
+
+  /**
+       *
+       * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game")
+       * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
+       */
+  private $reservation;
+
+
+
+  /**
+  * @ORM\ManyToMany(targetEntity="Console", mappedBy="Game")
+  */
+  private $console;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture", type="string", length=255)
+     */
+    private $picture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="string", length=255)
+     */
+    private $commentaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="typegame", type="string", length=50)
+     */
+    private $typegame;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Game
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Game
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set commentaire
+     *
+     * @param string $commentaire
+     *
+     * @return Game
+     */
+    public function setCommentaire($commentaire)
+    {
+        $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get commentaire
+     *
+     * @return string
+     */
+    public function getCommentaire()
+    {
+        return $this->commentaire;
+    }
+
+    /**
+     * Set typegame
+     *
+     * @param string $typegame
+     *
+     * @return Game
+     */
+    public function setTypegame($typegame)
+    {
+        $this->typegame = $typegame;
+
+        return $this;
+    }
+
+    /**
+     * Get typegame
+     *
+     * @return string
+     */
+    public function getTypegame()
+    {
+        return $this->typegame;
+    }
+}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Consoles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Marque</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for console in consoles %}
+            <tr>
+                <td><a href="{{ path('console_show', { 'id': console.id }) }}">{{ console.id }}</a></td>
+                <td>{{ console.name }}</td>
+                <td>{{ console.marque }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('console_show', { 'id': console.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('console_edit', { 'id': console.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('console_new') }}">Create a new console</a>
+        </li>
+    </ul>
+{% endblock %}
