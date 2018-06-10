@@ -75,4 +75,19 @@ fos_user:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
     service:                               # this lines
-        mailer: fos_user.mailer.twig_swift   
+        mailer: fos_user.mailer.twig_swift
+
+ivory_ck_editor:
+    configs:
+        full_config:
+            jquery: true
+            height: '900px'
+            language: fr
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+            extraPlugins: 'lineutils,widget,dialog,codesnippet,widgetselection'
+        basic_config:
+            jquery: true
+            heihgt: '250px'
+            language: fr
+            toolbar: basic

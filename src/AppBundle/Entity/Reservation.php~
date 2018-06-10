@@ -101,4 +101,28 @@ class Reservation
     {
         return $this->nombrepersonne;
     }
+
+    /**
+     * Set game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return Reservation
+     */
+    public function setGame(\AppBundle\Entity\Game $game = null)
+    {
+        $this->Game = $game;
+
+        return $this;
+    }
+
+    /**
+     * Get game
+     *
+     * @return \AppBundle\Entity\Game
+     */
+    public function getGame()
+    {
+        return $this->Game;
+    }
 }
