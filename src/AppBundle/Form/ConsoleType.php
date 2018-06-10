@@ -13,7 +13,7 @@ class ConsoleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('marque');
+        $builder->add('name')->add('marque')->add('Salle');
     }/**
      * {@inheritdoc}
      */
@@ -31,6 +31,4 @@ class ConsoleType extends AbstractType
     {
         return 'appbundle_console';
     }
-
-
 }

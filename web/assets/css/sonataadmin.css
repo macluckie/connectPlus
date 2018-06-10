@@ -1,0 +1,17 @@
+.wrapper > .main-header > .navbar{
+    background-color: #333;
+}
+
+.wrapper > .main-header > .logo{
+    background-color: #333;
+}
+
+
+.wrapper > .main-header > .navbar-static-top > .sidebar-toggle{
+    background-color: white;
+}
+
+.linkEditor{
+    color: black;
+    font-weight: bold;
+}

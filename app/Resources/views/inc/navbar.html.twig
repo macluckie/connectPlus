@@ -1,0 +1,47 @@
+
+
+<nav class="navbar navbar-expand-lg bg-light ">
+    <img src="{{ asset("/assets/images/connect+.jpg") }}" height="50" />
+    <a class="navbar-brand" href="{{ path('homepage') }}">Connect+</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars navbar-toggler-icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle dropdownJeux " href="#" id="navbarDropdownGame" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-gamepad  fa-2x" title="les 7 derniers jeux"></i>
+                </a>
+                <div class="dropdown-menu menuJeux" aria-labelledby="navbarDropdownGame">
+                    {% for game in games %}
+                        <a class="dropdown-item" href="{{ path('gamedetails', {'id': game.id}) }}">{{ game.name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle dropdownConsole" href="#" id="navbarDropdownConsole" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fab fa-playstation fa-2x " title="par console"></i>
+                </a>
+                <div class="dropdown-menu menuConsole" aria-labelledby="navbarDropdownConsole">
+                    {% for console in consoles %}
+                        <a class="dropdown-item" href="{{ path('gamebyconsole', {'id': console.id}) }}">{{ console.name }}</a>
+                    {% endfor %}
+
+
+
+                </div>
+            </li>
+
+
+
+
+        </ul>
+    </div>
+
+
+</nav>
+
+

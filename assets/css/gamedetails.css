@@ -1,0 +1,64 @@
+/* .iframeVideosGame{
+    float: left;
+    margin-right: 10px;
+
+
+} */
+
+
+
+.rowcard{
+
+
+	max-width: 100%;
+}
+
+
+.comGame{
+    background-color: #758271;
+    color: white;
+    height: 446px;
+    width: 761px;
+    padding-left: 10px;
+}
+
+
+@media screen and (max-width: 320px) {
+
+		.iframeVideosGame{  				 
+  				 
+  				 width: 319px; 
+}
+
+
+
+.comGame{
+    background-color: #758271;
+    color: white;
+    height: 446px;
+    width: 319px;
+    padding-left: 10px;
+}
+
+}
+
+
+@media screen and (min-width: 321px) and  (max-width: 414px) {
+
+    .iframeVideosGame{           
+           
+           width: 413px; 
+}
+
+
+
+.comGame{
+    background-color: #758271;
+    color: white;
+    height: 446px;
+    width: 413px;
+    padding-left: 10px;
+}
+
+}
+

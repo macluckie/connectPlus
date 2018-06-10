@@ -1,0 +1,44 @@
+.listeJeux{
+
+list-style: none;
+text-align: center;
+background-color: white;
+padding-top: 30px;
+padding-bottom: 30px;
+min-height: 300px;
+
+}
+
+.unJeux{
+  margin-bottom: 30px;
+  font-size: 1.3em;
+}
+
+.unJeux:hover{
+
+  background-color: #f2f2f2;
+
+
+}
+
+.comliste{
+
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
+
+.lienjeux{
+  color: black;
+}
+
+.lienjeux:hover{
+  color: black;
+}
+
+
+.nomConsole{
+
+        margin-bottom: 15px;
+}
+

@@ -15,11 +15,10 @@ class Console
 
 
 
-  /**
-  * @ORM\ManyToMany(targetEntity="Game", inversedBy="Console")
-  * @ORM\JoinTable(name="Console_Game")
-  */
-  private $Game;
+    /**
+     * @ORM\ManyToMany(targetEntity="Game", mappedBy="console")
+     */
+    private $game;
 
 
   /**
@@ -27,7 +26,14 @@ class Console
     *@ORM\ManyToOne(targetEntity="Salle", inversedBy="Console")
     *@ORM\JoinColumn(name="Salle_id", referencedColumnName="id")
     */
-     private $Salle;
+    private $Salle;
+
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="console")
+     */
+    private $reservations;
 
     /**
      * @var int
@@ -45,10 +51,18 @@ class Console
      */
     private $name;
 
+    public function __toString()
+    {
+        if ($this->getName()==null) {
+            return 'false';
+        }
+        return $this->name;
+    }
+
     /**
      * @var string
      *
-     * @ORM\Column(name="marque", type="string", length=50)
+     * @ORM\Column(name="marque", type="string", length=50, nullable=true)
      */
     private $marque;
 
@@ -133,5 +147,91 @@ class Console
     public function getSalle()
     {
         return $this->Salle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Game = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Reservation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return Console
+     */
+    public function addGame(\AppBundle\Entity\Game $game)
+    {
+        $this->Game[] = $game;
+
+        return $this;
+    }
+
+    /**
+     * Remove game
+     *
+     * @param \AppBundle\Entity\Game $game
+     */
+    public function removeGame(\AppBundle\Entity\Game $game)
+    {
+        $this->Game->removeElement($game);
+    }
+
+    /**
+     * Get game
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGame()
+    {
+        return $this->game;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return Console
+     */
+    public function addReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->Reservation[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->Reservation->removeElement($reservation);
+    }
+
+    /**
+     * Get reservation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservation()
+    {
+        return $this->Reservation;
+    }
+
+    /**
+     * Get reservations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

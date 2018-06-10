@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
+    <h1> {{ game.name }}</h1>
+
+{% if game.video != null %}
+<div class="row rowcard">
+	<div class=" col-lg-6">
+    <iframe width="761" height="446"
+            src=" https://www.youtube.com/embed/{{ game.video |replace({'https://www.youtube.com/watch?v=':''})}}"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="iframeVideosGame"></iframe>
+
+   </div>
+{% endif %}
+
+ <div class=" col-lg-6">
+   <p class="comGame">{{ game.commentaire }} </p>
+</div> 
+</div>
+        {{ render(controller('AppBundle\\Controller\\FormResaController:formAction')) }}
+
+{{ render(controller('AppBundle\\Controller\\FooterController::getPhoneNumberAction')) }}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+
+
+
+<a href="{{ path('sonata_admin_dashboard') }}" class="badge badge-secondary" >acceuil Administration</a>
+<form  action="{{path('homepage')}}" method="post">
+
+
+  <textarea name="editor1" id="editor1" rows="10" cols="80">
+      {{ details |raw }}
+  </textarea>
+  <input type="submit" name="valider" value="valider">
+</form>
+
+
+{{ form_start(form,{'attr':{'class':'reservationForm',novalidate: 'novalidate' }}) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+
+<script   src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="ckeditor/adapters/jquery.js"></script>
+
+
+
+<script type="text/javascript">
+CKEDITOR.replace( 'editor1' )
+</script>
+
+
+
+{% endblock %}

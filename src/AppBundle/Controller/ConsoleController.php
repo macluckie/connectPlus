@@ -5,21 +5,13 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Console;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Console controller.
- *
- * @Route("console")
- */
+
 class ConsoleController extends Controller
 {
-    /**
-     * Lists all console entities.
-     *
-     * @Route("/", name="console_index")
-     * @Method("GET")
-     */
+    
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -31,12 +23,6 @@ class ConsoleController extends Controller
         ));
     }
 
-    /**
-     * Creates a new console entity.
-     *
-     * @Route("/new", name="console_new")
-     * @Method({"GET", "POST"})
-     */
     public function newAction(Request $request)
     {
         $console = new Console();
@@ -57,12 +43,7 @@ class ConsoleController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a console entity.
-     *
-     * @Route("/{id}", name="console_show")
-     * @Method("GET")
-     */
+   
     public function showAction(Console $console)
     {
         $deleteForm = $this->createDeleteForm($console);
@@ -73,12 +54,7 @@ class ConsoleController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing console entity.
-     *
-     * @Route("/{id}/edit", name="console_edit")
-     * @Method({"GET", "POST"})
-     */
+   
     public function editAction(Request $request, Console $console)
     {
         $deleteForm = $this->createDeleteForm($console);
@@ -98,12 +74,7 @@ class ConsoleController extends Controller
         ));
     }
 
-    /**
-     * Deletes a console entity.
-     *
-     * @Route("/{id}", name="console_delete")
-     * @Method("DELETE")
-     */
+   
     public function deleteAction(Request $request, Console $console)
     {
         $form = $this->createDeleteForm($console);
@@ -118,13 +89,6 @@ class ConsoleController extends Controller
         return $this->redirectToRoute('console_index');
     }
 
-    /**
-     * Creates a form to delete a console entity.
-     *
-     * @param Console $console The console entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Console $console)
     {
         return $this->createFormBuilder()

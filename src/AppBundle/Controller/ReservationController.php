@@ -5,21 +5,12 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Reservation controller.
- *
- * @Route("reservation")
- */
 class ReservationController extends Controller
 {
-    /**
-     * Lists all reservation entities.
-     *
-     * @Route("/", name="reservation_index")
-     * @Method("GET")
-     */
+    
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -31,12 +22,7 @@ class ReservationController extends Controller
         ));
     }
 
-    /**
-     * Creates a new reservation entity.
-     *
-     * @Route("/new", name="reservation_new")
-     * @Method({"GET", "POST"})
-     */
+    
     public function newAction(Request $request)
     {
         $reservation = new Reservation();
@@ -57,12 +43,7 @@ class ReservationController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a reservation entity.
-     *
-     * @Route("/{id}", name="reservation_show")
-     * @Method("GET")
-     */
+    
     public function showAction(Reservation $reservation)
     {
         $deleteForm = $this->createDeleteForm($reservation);
@@ -73,12 +54,7 @@ class ReservationController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing reservation entity.
-     *
-     * @Route("/{id}/edit", name="reservation_edit")
-     * @Method({"GET", "POST"})
-     */
+  
     public function editAction(Request $request, Reservation $reservation)
     {
         $deleteForm = $this->createDeleteForm($reservation);
@@ -98,12 +74,7 @@ class ReservationController extends Controller
         ));
     }
 
-    /**
-     * Deletes a reservation entity.
-     *
-     * @Route("/{id}", name="reservation_delete")
-     * @Method("DELETE")
-     */
+   
     public function deleteAction(Request $request, Reservation $reservation)
     {
         $form = $this->createDeleteForm($reservation);
@@ -118,13 +89,7 @@ class ReservationController extends Controller
         return $this->redirectToRoute('reservation_index');
     }
 
-    /**
-     * Creates a form to delete a reservation entity.
-     *
-     * @param Reservation $reservation The reservation entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
+    
     private function createDeleteForm(Reservation $reservation)
     {
         return $this->createFormBuilder()

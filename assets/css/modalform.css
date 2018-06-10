@@ -1,0 +1,39 @@
+.modalform{
+
+    margin-top: 50px;
+    margin-left: 50%;
+    z-index: 999;
+    position: fixed;
+    top: 0;  
+    left: 660px;
+    top: 600px;
+
+}
+
+
+@media screen and (max-width: 320px){
+
+
+	.modalform{
+
+	left: 37%;     
+    z-index: 999;
+    position: fixed;   
+    top: 477px;
+
+	}	
+}
+
+
+@media screen and (min-width: 321px) and (max-width: 414px){
+
+
+    .modalform{
+
+    left: 37%;     
+    z-index: 999;
+    position: fixed;   
+    top: 640px;
+
+    }   
+}

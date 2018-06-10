@@ -1,0 +1,203 @@
+h1{
+    text-align: center;
+    font-family: 'Old Standard TT', serif;
+
+}
+
+h2{
+    text-align: center;
+    font-family: 'Old Standard TT', serif;
+
+}
+
+.nav-item{
+    margin-right: 40px;
+}
+
+.bodyConnectPlus{
+    font-family: 'Old Standard TT', serif;
+    background-image:linear-gradient(white, black);
+    min-height: 900px;
+    background-repeat: no-repeat;
+}
+
+.descriptionconnect{
+    color: white;
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    font-family: 'Overpass', sans-serif;
+
+}
+
+.dernierjeux {
+
+    font-family: 'Overpass', sans-serif;
+
+}
+
+
+
+
+
+.dernierjeux > .nouveaujeux{
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    margin: auto;
+   
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .dernierjeux > .nouveaujeux{
+        display: flex;
+        width: 85%;
+        flex-direction: column;
+         
+
+}
+
+}
+
+
+
+
+.carousel{
+    margin: auto;
+    width: 80%;
+    margin-top: 40px;
+    z-index: -10;
+}
+
+
+@media screen and (max-width: 414px) {
+  
+  .imgcarrousel{
+    height: 200px;
+    
+}
+}
+
+
+
+
+.navbar{
+    opacity: 0.7;
+    z-index: 2;
+}
+
+.navbar-nav{
+    margin-left: 80%;
+}
+
+.navbar-brand{
+
+    margin-left: 10px;
+}
+.card:hover .card-img-top{
+    opacity: 0.5;
+}
+
+.card:hover{
+    box-shadow: gray 5px 5px 7px 5px;
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    
+    margin-right: 10px;
+    margin-top: 15px;
+   
+  }
+}
+
+
+@media screen and (min-width: 321px) and (max-width: 414px) {
+  .card {
+    
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-left: 30px;
+   
+  }
+}
+
+.reservationForm{
+    width: 50%;
+    margin: auto;
+
+}
+section.descriptionconnect hr{
+    margin-bottom: 60px;
+    margin-top: 60px;
+    border: solid black 2px;
+    width: 200px;
+}
+
+
+
+.card-text{
+    overflow: auto;
+    height: 200px;
+}
+
+
+
+.card-title{
+    background-color: gray;
+}
+
+.navbar-brand, .dropdown-toggle{
+    color: black;
+    font-weight: bold;
+
+}
+
+.dropdown-toggle:hover .dropdown-menu{
+
+    display:block;
+}
+
+
+.navbar-brand:hover{
+    background-color: whitesmoke;
+}
+
+.dropdown-toggle:hover{
+    background-color: whitesmoke;
+}
+
+.titrejeux{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: white;
+
+}
+
+
+a.dropdown-item{
+
+    font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+
+        .dropdown-item{
+
+    font-weight: bold;
+    font-size: 0.7em;
+
+}
+
+
+}
+
+.bodyConnectPlus > .container-fluid{
+
+  padding-left: 0px;
+  padding-right: 0px;
+}
+

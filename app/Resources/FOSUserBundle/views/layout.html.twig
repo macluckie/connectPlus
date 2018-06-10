@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+                  integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+                  crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Overpass" rel="stylesheet">
+
+
+        {% endblock %}
+    </head>
+    <body id="bodyFosUser">
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'deconnecter'|trans({}, 'FOSUserBundle') }}
+                </a>
+           
+            {% endif %}
+        </div>
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+
+    {% block javascripts %}
+
+        <script src="{{ asset('build/app.js') }}"
+        ></script>
+    {% endblock %}
+    </body>
+</html>

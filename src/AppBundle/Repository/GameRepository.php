@@ -10,4 +10,32 @@ namespace AppBundle\Repository;
  */
 class GameRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getLastGame()
+    {
+
+        $query = $this->createQueryBuilder('g')
+                      ->orderBy('g.id', 'DESC')
+                      ->setMaxResults(3)
+                      ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+   
+
+
+
+
+    public function getLastSevenGame()
+    {
+
+        $query = $this->createQueryBuilder('g')
+                      ->orderBy('g.id', 'DESC')
+                      ->setMaxResults(7)
+                      ->getQuery();
+
+        return $query->getResult();
+    }
 }
