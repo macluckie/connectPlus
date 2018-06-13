@@ -21,24 +21,10 @@ class DefaultController extends Controller
 
 
 
-      $defaultData = array('message' => 'Type your message here');
-  $form = $this->createFormBuilder($defaultData)
-
-      ->add('message', TextareaType::class)
-      ->add('content', 'ckeditor')
-      ->add('send', SubmitType::class)
-      ->getForm();
-
-  $form->handleRequest($request);
-
-  if ($form->isSubmitted() && $form->isValid()) {
-      // data is an array with "name", "email", and "message" keys
-      $data = $form->getData();
-  }
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            'form' => $form->createview(),
+
         ]);
     }
 }

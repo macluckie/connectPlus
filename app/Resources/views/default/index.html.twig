@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<header>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Connect+</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,13 +74,62 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+</header>
+
+<section class="3dernierjeux">
+  <h2>les 3 dernier jeux</h2>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</section>
+
+<section class="reservation">
+  <h2> Reserver</h2>
+<form>
+  <div class="form-group">
+      <label for="exampleFormControlInput1">Nom</label>
+  <input class="form-control" type="text" placeholder="Default input">
+</div>
+<div class="form-group">
+    <label for="exampleFormControlInput1">Prenom</label>
+  <input class="form-control" type="text" placeholder="Default input">
+</div>
+<div class="form-group">
+    <label for="exampleFormControlInput1">Nombre de personne</label>
+  <input class="form-control" type="text" placeholder="Default input">
+</div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
 
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_javascript(form) }}
 
-{{ form_end(form) }}
+</form>
 
 
 
