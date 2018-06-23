@@ -46,6 +46,11 @@ class Salle
     private $adresse;
 
 
+        public function __toString()
+        {
+            return $this->name;
+        }
+
     /**
      * Get id
      *

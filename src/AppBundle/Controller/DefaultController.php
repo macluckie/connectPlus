@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Repository\GameRepository;
 
 
 class DefaultController extends Controller
@@ -20,10 +21,12 @@ class DefaultController extends Controller
     {
 
 
-
+        $em = $this->getDoctrine()->getManager();
+        $games = $em->getRepository('AppBundle:Game')->getLastGame();
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'games' => $games,
 
         ]);
     }

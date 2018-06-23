@@ -1,3 +1,10 @@
-body{
-  background-color: red;
+h2, h1{
+    text-align: center;
 }
+
+.dernierjeux {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-around;
+}
+
