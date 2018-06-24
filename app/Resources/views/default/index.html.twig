@@ -106,28 +106,11 @@
 <section class="reservation">
 <h2>reservation</h2>
 
-  <form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Nom</label>
-    <input class="form-control" type="text" placeholder="Default input">
-  </div>
-  <div class="form-group">
-  <label for="exampleFormControlInput1">Prenom</label>
-  <input class="form-control" type="text" placeholder="Default input">
-</div>
-  <div class="form-group">
-  <label for="exampleFormControlInput1">Nombre de personne</label>
-  <input class="form-control" type="text" placeholder="Default input">
-</div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 
-
-
-</form>
-</div>
+</section>
 
 
 {% endblock %}

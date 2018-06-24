@@ -45,6 +45,12 @@ class Salle
      */
     private $adresse;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="salle")
+     */
+    private $reservations;
+
 
         public function __toString()
         {
@@ -148,5 +154,39 @@ class Salle
     public function getConsole()
     {
         return $this->Console;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return Salle
+     */
+    public function addReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

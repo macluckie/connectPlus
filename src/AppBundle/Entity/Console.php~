@@ -16,11 +16,25 @@ class Console
 
 
   /**
+  * @ORM\ManyToMany(targetEntity="Game", inversedBy="Console")
+  * @ORM\JoinTable(name="Console_Game")
+  */
+  private $Game;
+
+
+  /**
     *
     *@ORM\ManyToOne(targetEntity="Salle", inversedBy="Console")
     *@ORM\JoinColumn(name="Salle_id", referencedColumnName="id")
     */
      private $Salle;
+
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="Console")
+     */
+    private $Reservation;
 
     /**
      * @var int
@@ -37,6 +51,11 @@ class Console
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * @var string
@@ -102,5 +121,29 @@ class Console
     public function getMarque()
     {
         return $this->marque;
+    }
+
+    /**
+     * Set salle
+     *
+     * @param \AppBundle\Entity\Salle $salle
+     *
+     * @return Console
+     */
+    public function setSalle(\AppBundle\Entity\Salle $salle = null)
+    {
+        $this->Salle = $salle;
+
+        return $this;
+    }
+
+    /**
+     * Get salle
+     *
+     * @return \AppBundle\Entity\Salle
+     */
+    public function getSalle()
+    {
+        return $this->Salle;
     }
 }

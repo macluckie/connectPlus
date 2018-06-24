@@ -29,6 +29,13 @@ class Console
     */
      private $Salle;
 
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="console")
+     */
+    private $reservations;
+
     /**
      * @var int
      *
@@ -44,6 +51,11 @@ class Console
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * @var string
@@ -133,5 +145,81 @@ class Console
     public function getSalle()
     {
         return $this->Salle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Game = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Reservation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return Console
+     */
+    public function addGame(\AppBundle\Entity\Game $game)
+    {
+        $this->Game[] = $game;
+
+        return $this;
+    }
+
+    /**
+     * Remove game
+     *
+     * @param \AppBundle\Entity\Game $game
+     */
+    public function removeGame(\AppBundle\Entity\Game $game)
+    {
+        $this->Game->removeElement($game);
+    }
+
+    /**
+     * Get game
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGame()
+    {
+        return $this->Game;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return Console
+     */
+    public function addReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->Reservation[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->Reservation->removeElement($reservation);
+    }
+
+    /**
+     * Get reservation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservation()
+    {
+        return $this->Reservation;
     }
 }

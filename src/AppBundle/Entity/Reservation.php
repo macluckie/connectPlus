@@ -43,6 +43,20 @@ class Reservation
      */
     private $nombrepersonne;
 
+    /**
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity= "Console", inversedBy= "reservations")
+     * @ORM\JoinColumn(name="console_id", referencedColumnName="id")
+     */
+    private $console;
+
+    /**
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="Salle", inversedBy="reservations")
+     * @ORM\JoinColumn(name="salle_id", referencedColumnName="id")
+     */
+    private $salle;
+
 
     /**
      * Get id
@@ -124,5 +138,53 @@ class Reservation
     public function getGame()
     {
         return $this->Game;
+    }
+
+    /**
+     * Set console
+     *
+     * @param \AppBundle\Entity\Console $console
+     *
+     * @return Reservation
+     */
+    public function setConsole(\AppBundle\Entity\Console $console = null)
+    {
+        $this->console = $console;
+
+        return $this;
+    }
+
+    /**
+     * Get console
+     *
+     * @return \AppBundle\Entity\Console
+     */
+    public function getConsole()
+    {
+        return $this->console;
+    }
+
+    /**
+     * Set salle
+     *
+     * @param \AppBundle\Entity\Salle $salle
+     *
+     * @return Reservation
+     */
+    public function setSalle(\AppBundle\Entity\Salle $salle = null)
+    {
+        $this->salle = $salle;
+
+        return $this;
+    }
+
+    /**
+     * Get salle
+     *
+     * @return \AppBundle\Entity\Salle
+     */
+    public function getSalle()
+    {
+        return $this->salle;
     }
 }

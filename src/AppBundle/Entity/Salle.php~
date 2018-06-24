@@ -45,6 +45,17 @@ class Salle
      */
     private $adresse;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="reservations")
+     */
+    private $reservations;
+
+
+        public function __toString()
+        {
+            return $this->name;
+        }
 
     /**
      * Get id
@@ -102,5 +113,46 @@ class Salle
     public function getAdresse()
     {
         return $this->adresse;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Console = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add console
+     *
+     * @param \AppBundle\Entity\Console $console
+     *
+     * @return Salle
+     */
+    public function addConsole(\AppBundle\Entity\Console $console)
+    {
+        $this->Console[] = $console;
+
+        return $this;
+    }
+
+    /**
+     * Remove console
+     *
+     * @param \AppBundle\Entity\Console $console
+     */
+    public function removeConsole(\AppBundle\Entity\Console $console)
+    {
+        $this->Console->removeElement($console);
+    }
+
+    /**
+     * Get console
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConsole()
+    {
+        return $this->Console;
     }
 }

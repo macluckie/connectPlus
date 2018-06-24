@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,6 +12,10 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Repository\GameRepository;
+use AppBundle\Entity\Reservation;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
 
 
 class DefaultController extends Controller
@@ -21,12 +27,31 @@ class DefaultController extends Controller
     {
 
 
+
+
+
+
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
+
+
+
+        $reservation = new Reservation();
+        $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($reservation);
+
+            $em->flush();
+        }
+
+
+            return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games' => $games,
+            'form' => $form->createView(),
 
         ]);
     }

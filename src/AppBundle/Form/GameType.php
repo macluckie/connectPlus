@@ -13,7 +13,8 @@ class GameType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('picture')->add('commentaire')->add('typegame');
+        $builder->add('name')->add('picture')->add('commentaire')
+            ->add('typegame')->add('Console');
     }/**
      * {@inheritdoc}
      */
