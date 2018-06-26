@@ -57,6 +57,32 @@ class Reservation
      */
     private $salle;
 
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="name", type="string",length=100)
+     */
+    private $name;
+
+
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="lastname", type="string",length=100)
+     */
+    private $lastname;
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="mail", type="string",length=255)
+     */
+    private $mail;
+
+
+
+
 
     /**
      * Get id
@@ -186,5 +212,77 @@ class Reservation
     public function getSalle()
     {
         return $this->salle;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Reservation
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return Reservation
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     *
+     * @return Reservation
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
     }
 }

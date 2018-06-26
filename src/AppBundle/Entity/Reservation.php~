@@ -52,10 +52,36 @@ class Reservation
 
     /**
      * Many Features have One Product.
-     * @ORM\ManyToOne(targetEntity="Salle", inversedBy="salle")
+     * @ORM\ManyToOne(targetEntity="Salle", inversedBy="reservations")
      * @ORM\JoinColumn(name="salle_id", referencedColumnName="id")
      */
     private $salle;
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="name", type="string",length=100)
+     */
+    private $name;
+
+
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="lastname", type="string",length=100)
+     */
+    private $lastname;
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="mail", type="string",length=255)
+     */
+    private $mail;
+
+
+
 
 
     /**
@@ -162,5 +188,29 @@ class Reservation
     public function getConsole()
     {
         return $this->console;
+    }
+
+    /**
+     * Set salle
+     *
+     * @param \AppBundle\Entity\Salle $salle
+     *
+     * @return Reservation
+     */
+    public function setSalle(\AppBundle\Entity\Salle $salle = null)
+    {
+        $this->salle = $salle;
+
+        return $this;
+    }
+
+    /**
+     * Get salle
+     *
+     * @return \AppBundle\Entity\Salle
+     */
+    public function getSalle()
+    {
+        return $this->salle;
     }
 }

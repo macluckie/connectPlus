@@ -15,7 +15,7 @@ use AppBundle\Repository\GameRepository;
 use AppBundle\Entity\Reservation;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-
+use AppBundle\Mailer\Mailer;
 
 
 class DefaultController extends Controller
@@ -23,7 +23,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Mailer $mailer)
     {
 
 
@@ -45,6 +45,22 @@ class DefaultController extends Controller
             $em->persist($reservation);
 
             $em->flush();
+
+
+            $lastReservations = $em->getRepository('AppBundle:Reservation')->getLastReservation();
+
+
+               foreach($lastReservations as $lastReservation) {
+
+                   echo   $lastReservation->getName();
+
+               }
+
+
+            // $mailer->SendReservation($data);
+
+
+
         }
 
 

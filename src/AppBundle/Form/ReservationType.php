@@ -16,14 +16,15 @@ class ReservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date')
-                ->add('nombrepersonne')
-                ->add('Game')
-                ->add('console')
-                ->add('salle')
-                ->add('reserver', SubmitType::class)
+            ->add('name')
+            ->add('lastname')
+            ->add('mail')
+            ->add('nombrepersonne')
+            ->add('Game')
+            ->add('console')
+            ->add('salle')
+            ->add('reserver', SubmitType::class);
 
-
-        ;
     }/**
      * {@inheritdoc}
      */
