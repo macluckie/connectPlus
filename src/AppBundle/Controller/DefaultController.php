@@ -49,12 +49,25 @@ class DefaultController extends Controller
 
             $lastReservations = $em->getRepository('AppBundle:Reservation')->getLastReservation();
 
+            $data = [];
 
-               foreach($lastReservations as $lastReservation) {
+            foreach($lastReservations as $lastReservation) {
 
-                   echo   $lastReservation->getName();
 
-               }
+                array_push($data,$lastReservation->getGame()->getName()
+                    ,$lastReservation->getConsole()->getName()
+                    ,$lastReservation->getSalle()->getName()
+                    ,$lastReservation->getName()
+                    , $lastReservation->getLastName()
+                    ,$lastReservation->getMail()
+                    ,$lastReservation->getNombrepersonne());
+
+            }
+
+            $mailer->SendReservation($data);
+
+
+
 
 
             // $mailer->SendReservation($data);
