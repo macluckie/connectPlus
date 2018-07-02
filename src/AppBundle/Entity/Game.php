@@ -19,14 +19,14 @@ class Game
        * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game")
        * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
        */
-  private $Reservation;
+    private $Reservation;
 
 
 
   /**
   * @ORM\ManyToMany(targetEntity="Console", mappedBy="Game")
   */
-  private $Console;
+    private $Console;
 
 
     /**

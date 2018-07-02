@@ -11,16 +11,16 @@ namespace AppBundle\Repository;
 class ReservationRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getLastReservation(){
+    public function getLastReservation()
+    {
 
         $query = $this->createQueryBuilder('r')
 
 
-            ->orderBy('r.id','DESC')
+            ->orderBy('r.id', 'DESC')
             ->setMaxResults(1)
             ->getQuery();
 
         return $query->getResult();
-
     }
 }

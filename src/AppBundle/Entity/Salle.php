@@ -18,7 +18,7 @@ class Salle
   /**
   * @ORM\OneToMany(targetEntity="Console", mappedBy="Salle")
   */
-  private $Console;
+    private $Console;
 
 
 
@@ -52,10 +52,10 @@ class Salle
     private $reservations;
 
 
-        public function __toString()
-        {
-            return $this->name;
-        }
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id

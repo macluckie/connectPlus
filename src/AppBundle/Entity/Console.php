@@ -19,7 +19,7 @@ class Console
   * @ORM\ManyToMany(targetEntity="Game", inversedBy="Console")
   * @ORM\JoinTable(name="Console_Game")
   */
-  private $Game;
+    private $Game;
 
 
   /**
@@ -27,7 +27,7 @@ class Console
     *@ORM\ManyToOne(targetEntity="Salle", inversedBy="Console")
     *@ORM\JoinColumn(name="Salle_id", referencedColumnName="id")
     */
-     private $Salle;
+    private $Salle;
 
 
     /**

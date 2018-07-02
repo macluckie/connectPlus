@@ -7,9 +7,9 @@
  */
 
 namespace AppBundle\Form;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-
 
 class RegistrationType extends AbstractType
 {
@@ -18,7 +18,6 @@ class RegistrationType extends AbstractType
         $builder
             ->add('name')
             ->add('lastname');
-
     }
 
     public function getParent()
@@ -30,6 +29,4 @@ class RegistrationType extends AbstractType
     {
         return 'app_user_registration';
     }
-
-
 }
