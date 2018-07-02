@@ -31,6 +31,4 @@ class SalleType extends AbstractType
     {
         return 'appbundle_salle';
     }
-
-
 }

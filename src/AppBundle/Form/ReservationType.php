@@ -7,7 +7,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class ReservationType extends AbstractType
 {
     /**
@@ -24,7 +23,6 @@ class ReservationType extends AbstractType
             ->add('console')
             ->add('salle')
             ->add('reserver', SubmitType::class);
-
     }/**
      * {@inheritdoc}
      */
@@ -43,6 +41,4 @@ class ReservationType extends AbstractType
     {
         return 'appbundle_reservation';
     }
-
-
 }

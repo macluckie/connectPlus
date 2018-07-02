@@ -31,6 +31,4 @@ class ConsoleType extends AbstractType
     {
         return 'appbundle_console';
     }
-
-
 }

@@ -32,6 +32,4 @@ class GameType extends AbstractType
     {
         return 'appbundle_game';
     }
-
-
 }

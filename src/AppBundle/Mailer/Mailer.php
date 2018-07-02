@@ -8,7 +8,6 @@
 
 namespace AppBundle\Mailer;
 
-
 class Mailer
 {
     private $template;
@@ -16,29 +15,34 @@ class Mailer
     private $setFrom;
 
 
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $templating,$setFrom)
+    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $templating, $setFrom)
     {
         $this->template = $templating;
         $this->swift = $mailer;
-
-
+        $this->setFrom = $setFrom;
     }
 
-    public function SendReservation($data){
-            echo $this->setFrom;
+    public function sendReservation($data)
+    {
 
-        $message = (new \Swift_Message('Reservation'))
-            ->setFrom($this->setFrom)
-            ->setTo('dimitri.macluckie@gmail.com')
-            ->setBody(
-                $this->template->render(
 
-                    'mail/mailreservation.html.twig',
-                    $data
-                ),
-                'text/html');
+        try {
+            $message = (new \Swift_Message('Reservation'))
+                ->setFrom($this->setFrom)
+                ->setTo('dimitri.macluckie@gmail.com')
+                ->setBody(
+                    $this->template->render(
+
+                        'mail/mailreservation.html.twig',
+                        $data
+                    ),
+                    'text/html'
+                );
+        } catch (\Twig_Error_Loader $e) {
+        } catch (\Twig_Error_Runtime $e) {
+        } catch (\Twig_Error_Syntax $e) {
+        }
 
         $this->swift->send($message);
     }
-
 }

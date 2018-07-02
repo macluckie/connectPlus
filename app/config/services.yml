@@ -35,8 +35,8 @@ services:
     #         $someArgument: 'some_value'
 
     AppBundle\Mailer\Mailer:
-        arguments:
-         $setFrom: '%mailer_user%'
+       arguments:
+           $setFrom: '%mailer_user%'
 
 
     app.form.registration:

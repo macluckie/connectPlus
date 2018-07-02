@@ -2,8 +2,6 @@
 
 namespace AppBundle\Controller;
 
-
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +14,6 @@ use AppBundle\Entity\Reservation;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use AppBundle\Mailer\Mailer;
-
 
 class DefaultController extends Controller
 {
@@ -51,29 +48,26 @@ class DefaultController extends Controller
 
             $data = [];
 
-            foreach($lastReservations as $lastReservation) {
-
-
-                array_push($data,$lastReservation->getGame()->getName()
-                    ,$lastReservation->getConsole()->getName()
-                    ,$lastReservation->getSalle()->getName()
-                    ,$lastReservation->getName()
-                    , $lastReservation->getLastName()
-                    ,$lastReservation->getMail()
-                    ,$lastReservation->getNombrepersonne());
-
+            foreach ($lastReservations as $lastReservation) {
+                array_push(
+                    $data,
+                    $lastReservation->getGame()->getName(),
+                    $lastReservation->getConsole()->getName(),
+                    $lastReservation->getSalle()->getName(),
+                    $lastReservation->getName(),
+                    $lastReservation->getLastName(),
+                    $lastReservation->getMail(),
+                    $lastReservation->getNombrepersonne()
+                );
             }
 
-            $mailer->SendReservation($data);
+            $mailer->sendReservation($data);
 
 
 
 
 
             // $mailer->SendReservation($data);
-
-
-
         }
 
 
@@ -82,6 +76,6 @@ class DefaultController extends Controller
             'games' => $games,
             'form' => $form->createView(),
 
-        ]);
+            ]);
     }
 }

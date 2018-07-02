@@ -17,7 +17,7 @@ class Reservation
     *
     * @ORM\OneToOne(targetEntity="Game", mappedBy="Reservation")
     */
-   private $Game;
+    private $Game;
 
 
     /**
