@@ -49,6 +49,7 @@ class DefaultController extends Controller
             $data = [];
 
             foreach ($lastReservations as $lastReservation) {
+                /** @var TYPE_NAME $lastReservation */
                 array_push(
                     $data,
                     $lastReservation->getGame()->getName(),
@@ -77,5 +78,27 @@ class DefaultController extends Controller
             'form' => $form->createView(),
 
             ]);
+    }
+
+
+
+
+    /**
+     * @Route("/admin", name="adminpage")
+     */
+    public function AdminAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneBy(['name'=>'test']);
+
+
+
+
+
+        return $this->render('admin/admin.html.twig');
+
+
+
     }
 }
