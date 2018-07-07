@@ -83,22 +83,5 @@ class DefaultController extends Controller
 
 
 
-    /**
-     * @Route("/admin", name="adminpage")
-     */
-    public function AdminAction(Request $request)
-    {
 
-        $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('AppBundle:User')->findOneBy(['name'=>'test']);
-
-
-
-
-
-        return $this->render('admin/admin.html.twig');
-
-
-
-    }
 }
