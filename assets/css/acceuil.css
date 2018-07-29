@@ -8,3 +8,12 @@ h2, h1{
     justify-content: space-around;
 }
 
+.carousel{
+    margin: auto;
+    width: 50%;
+    margin-top: 15px;
+}
+
+.navbar{
+    background-color: #37769e;
+}
