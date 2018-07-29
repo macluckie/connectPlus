@@ -16,6 +16,5 @@
 /vendor/
 /web/bundles/
 /infoprojet
-/.idea
 .idea
-.idea/
+
