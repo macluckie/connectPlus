@@ -20,7 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-
 class GameAdmin extends AbstractAdmin
 {
 
@@ -33,7 +32,7 @@ class GameAdmin extends AbstractAdmin
         'choice_label' => 'name',
         'multiple' =>'true',
         ))
-    ;
+        ;
         $formMapper->add('imageFile', FileType  ::class);
         $formMapper->add('commentaire', TextareaType::class);
     }
@@ -51,5 +50,4 @@ class GameAdmin extends AbstractAdmin
         $listMapper->addIdentifier('typegame');
         $listMapper->addIdentifier('commentaire');
     }
-
 }

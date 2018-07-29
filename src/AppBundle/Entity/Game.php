@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
-
 /**
  * Game
  *
@@ -72,10 +70,10 @@ class Game
 
     public function __toString()
     {
-        if($this->getName()==null){
+        if ($this->getName()==null) {
             return 'False';
         }
-       return $this->getName();
+        return $this->getName();
     }
 
 

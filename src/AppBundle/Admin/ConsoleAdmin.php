@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Admin;
+
 use AppBundle\Entity\Reservation;
 use AppBundle\Entity\Console;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,7 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-
 class ConsoleAdmin extends AbstractAdmin
 {
 
@@ -27,20 +27,15 @@ class ConsoleAdmin extends AbstractAdmin
     {
         $formMapper->add('name', TextType::class);
         $formMapper->add('marque', TextType::class);
-
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('name');
-
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name');
-
     }
-
-
 }

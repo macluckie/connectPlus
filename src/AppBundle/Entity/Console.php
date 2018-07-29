@@ -53,9 +53,10 @@ class Console
     private $name;
 
     public function __toString()
-    {   if($this->getName()==null){
-        return 'false';
-    }
+    {
+        if ($this->getName()==null) {
+            return 'false';
+        }
         return $this->name;
     }
 
