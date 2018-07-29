@@ -8,7 +8,7 @@ Encore
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
 
-    // will create web/build/app.js and web/build/app.css
+    // will create web/build/app.js and web/build/app.scss
     .addEntry('app', './assets/js/app.js')
 
     // allow legacy applications to use $/jQuery as a global variable
@@ -27,8 +27,9 @@ Encore
 // .enableVersioning()
 
 // allow sass/scss files to be processed
-// .enableSassLoader()
+ .enableSassLoader()
 ;
 
 // export the final configuration
 module.exports = Encore.getWebpackConfig();
+
