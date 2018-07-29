@@ -46,9 +46,16 @@ services:
 
 
     admin.Game:
-            class: src\Admin\GameAdmin
+            class: AppBundle\Admin\GameAdmin
             arguments: [~, AppBundle\Entity\Game, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Game }
             public: true
+
+    admin.Console:
+                class: AppBundle\Admin\ConsoleAdmin
+                arguments: [~, AppBundle\Entity\Console, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: Console }
+                public: true
 
