@@ -86,3 +86,23 @@ swiftmailer:
     host:      '%mailer_host%'
     username:  '%mailer_user%'
     password:  '%mailer_password%'
+
+
+sonata_block:
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+framework:
+        translator: { fallbacks: ["%locale%"] }
+
+
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        product_image:
+            uri_prefix: /web/upload
+            upload_destination: '%kernel.project_dir%/web/upload'
+            inject_on_load: false

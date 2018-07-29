@@ -49,6 +49,7 @@ class DefaultController extends Controller
             $data = [];
 
             foreach ($lastReservations as $lastReservation) {
+                /** @var TYPE_NAME $lastReservation */
                 array_push(
                     $data,
                     $lastReservation->getGame()->getName(),
@@ -78,4 +79,9 @@ class DefaultController extends Controller
 
             ]);
     }
+
+
+
+
+
 }

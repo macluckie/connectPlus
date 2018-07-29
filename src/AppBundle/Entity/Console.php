@@ -16,10 +16,10 @@ class Console
 
 
   /**
-  * @ORM\ManyToMany(targetEntity="Game", inversedBy="Console")
+  * @ORM\ManyToMany(targetEntity="Game", inversedBy="console")
   * @ORM\JoinTable(name="Console_Game")
   */
-    private $Game;
+    private $game;
 
 
   /**
@@ -53,14 +53,16 @@ class Console
     private $name;
 
     public function __toString()
-    {
+    {   if($this->getName()==null){
+        return 'false';
+    }
         return $this->name;
     }
 
     /**
      * @var string
      *
-     * @ORM\Column(name="marque", type="string", length=50)
+     * @ORM\Column(name="marque", type="string", length=50, nullable=true)
      */
     private $marque;
 
@@ -221,5 +223,15 @@ class Console
     public function getReservation()
     {
         return $this->Reservation;
+    }
+
+    /**
+     * Get reservations.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

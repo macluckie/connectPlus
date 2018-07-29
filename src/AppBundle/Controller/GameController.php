@@ -124,7 +124,7 @@ class GameController extends Controller
      *
      * @param Game $game The game entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Game $game)
     {
