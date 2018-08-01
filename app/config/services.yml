@@ -59,3 +59,10 @@ services:
                     - { name: sonata.admin, manager_type: orm, label: Console }
                 public: true
 
+
+    admin.Salle:
+      class: AppBundle\Admin\SalleAdmin
+      arguments: [~, AppBundle\Entity\Salle, ~]
+      tags:
+      - { name: sonata.admin, manager_type: orm, label: Salle }
+      public: true

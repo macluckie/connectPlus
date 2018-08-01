@@ -17,3 +17,13 @@ h2, h1{
 .navbar{
     background-color: #37769e;
 }
+.card:hover{
+    opacity: 0.5;
+}
+
+
+.reservationForm{
+    width: 50%;
+    margin: auto;
+
+}

@@ -30,6 +30,7 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
+        $consoles = $em->getRepository('AppBundle:Console')->findAll();
 
 
 
@@ -75,6 +76,7 @@ class DefaultController extends Controller
             return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games' => $games,
+            'consoles'=>$consoles,
             'form' => $form->createView(),
 
             ]);
