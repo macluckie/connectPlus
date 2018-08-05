@@ -3,58 +3,7 @@
 <div class="container-fluid">
 <header>
 
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <img src="{{ asset("/assets/images/connect+.jpg") }}" height="50" />
-  <a class="navbar-brand" href="#">Connect+</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Jeux
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% for game in games %}
-          <a class="dropdown-item" href="#">{{ game.name }}</a>
-          {% endfor %}
-
-          <div class="dropdown-divider"></div>
-
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Console
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% for console in consoles %}
-          <a class="dropdown-item" href="#">{{ console.name }}</a>
-          {% endfor %}
-
-          <div class="dropdown-divider"></div>
-
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Creer Un compte</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
-
-    </ul>
-
-
-</nav>
+    {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -107,21 +56,15 @@
   <div class="card-body">
     <h5 class="card-title">{{ game.name }}</h5>
     <p class="card-text">{{ game.commentaire }}</p>
-    <a href="#" class="btn btn-primary">Description</a>
+    <a href="{{ path('gamedetails', {'id': game.id}) }}" class="btn btn-primary">Description</a>
   </div>
 </div>
     {% endfor %}
 
 </section>
   <hr>
-<section class="reservation">
-<h2>reservation</h2>
 
-    {{ form_start(form,{'attr':{'class':'reservationForm'}}) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-
-</section>
+{% include '/inc/modal.html.twig' %}
 
 </div>
 {% endblock %}

@@ -30,55 +30,39 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
-        $consoles = $em->getRepository('AppBundle:Console')->findAll();
-
-
-
-        $reservation = new Reservation();
-        $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($reservation);
-
-            $em->flush();
-
-
-            $lastReservations = $em->getRepository('AppBundle:Reservation')->getLastReservation();
-
-            $data = [];
-
-            foreach ($lastReservations as $lastReservation) {
-                /** @var TYPE_NAME $lastReservation */
-                array_push(
-                    $data,
-                    $lastReservation->getGame()->getName(),
-                    $lastReservation->getConsole()->getName(),
-                    $lastReservation->getSalle()->getName(),
-                    $lastReservation->getName(),
-                    $lastReservation->getLastName(),
-                    $lastReservation->getMail(),
-                    $lastReservation->getNombrepersonne()
-                );
-            }
-
-            $mailer->sendReservation($data);
 
 
 
 
 
-            // $mailer->SendReservation($data);
-        }
 
 
             return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            'games' => $games,
-            'consoles'=>$consoles,
-            'form' => $form->createView(),
+            'games'=>$games,
+
+
 
             ]);
+    }
+
+
+    public function navbarAction(){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $consoles = $em->getRepository('AppBundle:Console')->findAll();
+        $games = $em->getRepository('AppBundle:Game')->findAll();
+
+        return $this->render('/inc/navbar.html.twig',[
+
+
+            'consoles'=>$consoles,
+            'games'=>$games,
+
+
+        ]);
+
+
     }
 }

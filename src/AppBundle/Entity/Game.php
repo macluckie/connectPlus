@@ -29,6 +29,8 @@ class Game
 
 
 
+
+
   /**
    *
   * @ORM\ManyToMany(targetEntity="Console", mappedBy="game")
@@ -57,7 +59,15 @@ class Game
     /**
      * @var string
      *
-     * @ORM\Column(name="commentaire", type="string", length=255)
+     * @ORM\Column(name="video", type="string", length=255,nullable=true)
+     */
+    private $video;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="text")
      */
     private $commentaire;
 
@@ -355,5 +365,29 @@ class Game
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set video.
+     *
+     * @param string|null $video
+     *
+     * @return Game
+     */
+    public function setVideo($video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video.
+     *
+     * @return string|null
+     */
+    public function getVideo()
+    {
+        return $this->video;
     }
 }

@@ -17,6 +17,11 @@ h2, h1{
 .navbar{
     background-color: #37769e;
 }
+
+.navbar-brand{
+
+    margin-left: 10px;
+}
 .card:hover{
     opacity: 0.5;
 }
