@@ -18,12 +18,17 @@ h2, h1{
     background-color: #37769e;
 }
 
+
 .navbar-brand{
 
     margin-left: 10px;
 }
-.card:hover{
+.card:hover .card-img-top{
     opacity: 0.5;
+}
+
+.card:hover{
+    box-shadow: #0c5460 4px 4px 2px;
 }
 
 
@@ -53,4 +58,12 @@ hr{
 
 .navbar-brand, .dropdown-toggle{
     color: white;
+}
+
+.navbar-brand:hover{
+    background-color: whitesmoke;
+}
+
+.dropdown-toggle:hover{
+    background-color: whitesmoke;
 }

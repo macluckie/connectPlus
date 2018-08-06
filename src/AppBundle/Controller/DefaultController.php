@@ -20,7 +20,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request, Mailer $mailer)
+    public function indexAction(Request $request)
     {
 
 
@@ -32,14 +32,31 @@ class DefaultController extends Controller
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
 
 
+        $maxId = $em->getRepository('AppBundle:Game')->getMaxId();
+
+        foreach ($maxId as $value){
+
+            $maxId= $value->getId();
+        }
+
+        $ramdomPicture = $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
+        $ramdomPicture2= $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
+        $ramdomPicture3 = $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
 
 
 
 
 
-            return $this->render('default/index.html.twig', [
+
+
+
+
+        return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games'=>$games,
+            'ramdomPicture'=>$ramdomPicture,
+            'ramdomPicture2'=>$ramdomPicture2,
+            'ramdomPicture3'=>$ramdomPicture3,
 
 
 
