@@ -69,7 +69,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $consoles = $em->getRepository('AppBundle:Console')->findAll();
-        $games = $em->getRepository('AppBundle:Game')->findAll();
+        $games = $em->getRepository('AppBundle:Game')->getLastSevenGame();
 
         return $this->render('/inc/navbar.html.twig',[
 

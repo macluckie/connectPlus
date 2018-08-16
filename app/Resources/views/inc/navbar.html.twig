@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg sticky-top ">
     <img src="{{ asset("/assets/images/connect+.jpg") }}" height="50" />
     <a class="navbar-brand" href="{{ path('homepage') }}">Connect+</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -12,37 +12,37 @@
 
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Jeux
+                <a class="nav-link dropdown-toggle dropdownJeux " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-gamepad  fa-2x"></i>
+
+
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu menuJeux" aria-labelledby="navbarDropdown">
                     {% for game in games %}
                         <a class="dropdown-item" href="{{ path('gamedetails', {'id': game.id}) }}">{{ game.name }}</a>
                     {% endfor %}
 
-                    <div class="dropdown-divider"></div>
+
 
                 </div>
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Console
+                <a class="nav-link dropdown-toggle dropdownConsole" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fab fa-playstation fa-2x"></i>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu menuConsole" aria-labelledby="navbarDropdown">
                     {% for console in consoles %}
                         <a class="dropdown-item" href="#">{{ console.name }}</a>
                     {% endfor %}
 
-                    <div class="dropdown-divider"></div>
+
 
                 </div>
             </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link" href="#"><img src="{{ asset('/assets/images/envelope.svg') }}" class="img-responsive"></a>
-            </li>
+
 
         </ul>
     </div>

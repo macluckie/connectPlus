@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container-fluid">
+
 <header>
 
     {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
@@ -38,11 +38,11 @@
   </a>
 </div>
 </header>
-  <hr>
 
-<section>
+<section class="descriptionconnect">
   <h2> Concept</h2>
-  <p class="descriptionconnect+">
+    <hr>
+  <p >
 
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
     magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -51,25 +51,25 @@
 
   </p>
 </section>
-<hr>
-  <h2>les 3 dernier jeux</h2>
-  <section class="dernierjeux">
 
-{% for game in games %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/upload/{{ game.imageName }}" alt="Card image cap" height= 200px>
-  <div class="card-body">
-    <h5 class="card-title">{{ game.name }}</h5>
-    <p class="card-text">{{ game.commentaire }}</p>
-    <a href="{{ path('gamedetails', {'id': game.id}) }}" class="btn btn-primary">Description</a>
-  </div>
-</div>
-    {% endfor %}
 
-</section>
-  <hr>
+    <h2 class="titrejeux">les 3 dernier jeux</h2>
+    <section class="dernierjeux">
 
-{% include '/inc/modal.html.twig' %}
+          {% for game in games %}
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="/upload/{{ game.imageName }}" alt="Card image cap" height= 200px>
+              <div class="card-body">
+                <h5 class="card-title">{{ game.name }}</h5>
+                <p class="card-text">{{ game.commentaire }}</p>
+                <a href="{{ path('gamedetails', {'id': game.id}) }}" class="btn btn-primary">Description</a>
+              </div>
+            </div>
+          {% endfor %}
 
-</div>
+      </section>
+
+    {% include '/inc/modal.html.twig' %}
+
+
 {% endblock %}
