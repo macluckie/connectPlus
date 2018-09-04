@@ -12,14 +12,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-
-
-
-
-
-
-
-
 class ReservationType extends AbstractType
 {
     /**
@@ -35,38 +27,16 @@ class ReservationType extends AbstractType
             ->add('salle')
             ->add('reserver', SubmitType::class)
             ->add('game',EntityType::class,[
-                "class"=>"AppBundle:Game",])
+                "class"=>"AppBundle:Game",
+                "attr"=>['class'=>'gameConsole',
+                "value"=>'test']])
+            ->add('console',EntityType::class,[
+                "class"=>"AppBundle:Console",
+                "attr"=>['class'=>'newSelect']
+            ])
+
             ;
 
-
-
-
-
-                    $builder->get('game')->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
-
-
-                        $form = $event->getForm();
-
-                        $data = $event->getData();
-
-                        var_dump($data->getGame());
-
-
-
-
-
-
-                        var_dump($data->getGame());
-
-                        $form->getParent()->add('console',EntityType::class,[
-                            'class'=>"AppBundle:Console",
-                            'choices'=>$data
-
-
-
-
-                        ]);
-                    });
 
 
 

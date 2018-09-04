@@ -31,10 +31,10 @@ class Game
 
 
 
-  /**
-   *
-  * @ORM\ManyToMany(targetEntity="Console", mappedBy="game")
-  */
+    /**
+     * @ORM\ManyToMany(targetEntity="Console", inversedBy="game", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="Console_Game")
+     */
     private $console;
 
 

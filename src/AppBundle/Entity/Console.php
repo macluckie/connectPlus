@@ -15,10 +15,9 @@ class Console
 
 
 
-  /**
-  * @ORM\ManyToMany(targetEntity="Game", inversedBy="console")
-  * @ORM\JoinTable(name="Console_Game")
-  */
+    /**
+     * @ORM\ManyToMany(targetEntity="Game", mappedBy="console")
+     */
     private $game;
 
 
@@ -189,7 +188,7 @@ class Console
      */
     public function getGame()
     {
-        return $this->Game;
+        return $this->game;
     }
 
     /**

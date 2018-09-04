@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,24 +17,21 @@ use AppBundle\Entity\Reservation;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use AppBundle\Mailer\Mailer;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+
+
+
 
 
 class FormResaController extends Controller
 {
-
-
-
-
-
-
-
-
-
-
+    /**
+     * @Route("/form", name="form")
+     */
 
     public function formAction(Request $request, Mailer $mailer)
     {
-
 
 
         $em = $this->getDoctrine()->getManager();
@@ -42,9 +40,14 @@ class FormResaController extends Controller
 
 
 
+
+
         $reservation = new Reservation();
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
+
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -88,6 +91,32 @@ class FormResaController extends Controller
             'form' => $form->createView(),
 
         ]);
+    }
+
+
+    /**
+     * @Route("/formajax", name="form_ajax")
+     */
+
+    public function formAjaxAction(Request $request){
+
+
+        $em = $this->getDoctrine()->getManager();
+      //  $console = $em->getRepository('AppBundle:Console')->findAll();
+        $game = $em->getRepository('AppBundle:Game')->findOneByName($request->request->get('param'));
+
+            $console = [];
+
+
+        foreach ($game->getConsole()->toArray() as $gameConsole){
+
+
+            array_push($console, $gameConsole->getName());
+
+        }
+
+        return new JsonResponse($console);
+
     }
 }
 

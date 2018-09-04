@@ -28,6 +28,7 @@ class DefaultController extends Controller
 
 
 
+
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
 
