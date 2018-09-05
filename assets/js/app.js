@@ -1,22 +1,13 @@
-var $ = require('jquery');
-
 require('bootstrap');
+
+var $ = require('jquery');
 
 require('../css/app.scss');
 
 
 $(document).ready(function(){
 
-    $('.dropdownJeux, .menuJeux').hover(function(){
 
-        $('.menuJeux').toggle();
-    })
-
-
-    $('.dropdownConsole, .menuConsole').hover(function(){
-
-        $('.menuConsole').toggle();
-    })
 
 
     //on envoie en post dans le controller le nom du jeux contenue dans le select
@@ -39,29 +30,14 @@ $(document).ready(function(){
             data: 'param='+game,
             success: function(data){
 
-                        if ($(".divNewSelect > option").length){
+                        if ($(".newSelect").length == 1){
 
 
-
-
-
-                    $(".divNewSelect > option").each(function(){
-
-
-                        $(".divNewSelect > option").remove();
-
-                    })
+                            $(".newSelect").remove();
 
                         }
 
-
-
-
-
-
-
-
-                // $(".reservationForm").append('<div class="form-group"><label class="required" for="appbundle_reservation_console">Console</label><select id="appbundle_reservation_console" name="appbundle_reservation[console]" class="newSelect form-control"></select></div>')
+                        $("#appbundle_reservation").append('<select id="appbundle_reservation_console" name="appbundle_reservation[console]" class="newSelect form-control"></select>')
 
 
 

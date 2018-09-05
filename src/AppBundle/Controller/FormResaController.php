@@ -102,7 +102,7 @@ class FormResaController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-      //  $console = $em->getRepository('AppBundle:Console')->findAll();
+
         $game = $em->getRepository('AppBundle:Game')->findOneByName($request->request->get('param'));
 
             $console = [];
