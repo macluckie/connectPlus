@@ -20,8 +20,9 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request, Mailer $mailer)
+    public function indexAction(Request $request)
     {
+
 
 
 
@@ -32,51 +33,54 @@ class DefaultController extends Controller
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
 
 
+        $maxId = $em->getRepository('AppBundle:Game')->getMaxId();
 
-        $reservation = new Reservation();
-        $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
-        $form->handleRequest($request);
+        foreach ($maxId as $value){
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($reservation);
-
-            $em->flush();
-
-
-            $lastReservations = $em->getRepository('AppBundle:Reservation')->getLastReservation();
-
-            $data = [];
-
-            foreach ($lastReservations as $lastReservation) {
-                /** @var TYPE_NAME $lastReservation */
-                array_push(
-                    $data,
-                    $lastReservation->getGame()->getName(),
-                    $lastReservation->getConsole()->getName(),
-                    $lastReservation->getSalle()->getName(),
-                    $lastReservation->getName(),
-                    $lastReservation->getLastName(),
-                    $lastReservation->getMail(),
-                    $lastReservation->getNombrepersonne()
-                );
-            }
-
-            $mailer->sendReservation($data);
-
-
-
-
-
-            // $mailer->SendReservation($data);
+            $maxId= $value->getId();
         }
 
+        $ramdomPicture = $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
+        $ramdomPicture2= $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
+        $ramdomPicture3 = $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
 
-            return $this->render('default/index.html.twig', [
+
+
+
+
+
+
+
+
+        return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            'games' => $games,
-            'form' => $form->createView(),
+            'games'=>$games,
+            'ramdomPicture'=>$ramdomPicture,
+            'ramdomPicture2'=>$ramdomPicture2,
+            'ramdomPicture3'=>$ramdomPicture3,
+
+
 
             ]);
+    }
+
+
+    public function navbarAction(){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $consoles = $em->getRepository('AppBundle:Console')->findAll();
+        $games = $em->getRepository('AppBundle:Game')->getLastSevenGame();
+
+        return $this->render('/inc/navbar.html.twig',[
+
+
+            'consoles'=>$consoles,
+            'games'=>$games,
+
+
+        ]);
+
+
     }
 }

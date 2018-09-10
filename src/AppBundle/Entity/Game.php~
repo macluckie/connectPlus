@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
 /**
  * Game
  *
@@ -30,9 +29,11 @@ class Game
 
 
 
+
+
   /**
    *
-  * @ORM\ManyToMany(targetEntity="Console", mappedBy="Game")
+  * @ORM\ManyToMany(targetEntity="Console", mappedBy="game")
   */
     private $console;
 
@@ -58,7 +59,15 @@ class Game
     /**
      * @var string
      *
-     * @ORM\Column(name="commentaire", type="string", length=255)
+     * @ORM\Column(name="video", type="string", length=255,nullable=true)
+     */
+    private $video;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="text")
      */
     private $commentaire;
 
@@ -71,10 +80,10 @@ class Game
 
     public function __toString()
     {
-        if($this->getName()==null){
+        if ($this->getName()==null) {
             return 'False';
         }
-       return $this->getName();
+        return $this->getName();
     }
 
 
@@ -356,5 +365,29 @@ class Game
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set video.
+     *
+     * @param string|null $video
+     *
+     * @return Game
+     */
+    public function setVideo($video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video.
+     *
+     * @return string|null
+     */
+    public function getVideo()
+    {
+        return $this->video;
     }
 }

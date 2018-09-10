@@ -1,0 +1,107 @@
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+.bodyConnectPlus{
+    background-image:linear-gradient(white, black);
+}
+
+.descriptionconnect{
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.dernierjeux {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-around;
+}
+
+.carousel{
+    margin: auto;
+    width: 50%;
+    margin-top: 15px;
+}
+
+.navbar{
+    opacity: 0.7;
+}
+
+
+.navbar-brand{
+
+    margin-left: 10px;
+}
+.card:hover .card-img-top{
+    opacity: 0.5;
+}
+
+.card:hover{
+    box-shadow: gray 5px 5px 7px 5px;
+}
+
+
+.reservationForm{
+    width: 50%;
+    margin: auto;
+
+}
+section.descriptionconnect hr{
+    margin-bottom: 60px;
+    margin-top: 60px;
+    border: solid black 2px;
+    width: 400px;
+}
+
+.card-text{
+    overflow: auto;
+    height: 200px;
+}
+
+.modalform{
+    margin-top: 50px;
+    margin-left: 50%;
+
+}
+
+.card-title{
+    background-color: gray;
+}
+
+.navbar-brand, .dropdown-toggle{
+    color: black;
+    font-weight: bold;
+
+}
+
+.dropdown-toggle:hover .dropdown-menu{
+
+    display:block;
+}
+
+
+.navbar-brand:hover{
+    background-color: whitesmoke;
+}
+
+.dropdown-toggle:hover{
+    background-color: whitesmoke;
+}
+
+.titrejeux{
+    text-align: center;
+
+}
+
+
+a.dropdown-item{
+
+    font-weight: bold;
+
+}

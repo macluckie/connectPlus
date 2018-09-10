@@ -23,4 +23,34 @@ class GameRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+
+    public function getMaxId()
+    {
+
+        $query = $this->createQueryBuilder('g')
+
+
+            ->orderBy('g.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+
+    public function getLastSevenGame()
+    {
+
+        $query = $this->createQueryBuilder('g')
+
+
+            ->orderBy('g.id', 'DESC')
+            ->setMaxResults(7)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

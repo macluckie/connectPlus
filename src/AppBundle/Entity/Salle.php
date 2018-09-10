@@ -38,10 +38,12 @@ class Salle
      */
     private $name;
 
+
+
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255,nullable=true)
      */
     private $adresse;
 
@@ -53,7 +55,9 @@ class Salle
 
 
     public function __toString()
-    {
+    {   if($this->name==null){
+        return 'false';
+    }
         return $this->name;
     }
 

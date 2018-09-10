@@ -26,6 +26,7 @@ class GameAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class);
+        $formMapper->add('video', TextType::class,["label"=>'video: link youtube']);
         $formMapper->add('typegame', TextType::class);
         $formMapper->add('console', EntityType::class, array(
         'class' => Console::class,
@@ -33,7 +34,7 @@ class GameAdmin extends AbstractAdmin
         'multiple' =>'true',
         ))
         ;
-        $formMapper->add('imageFile', FileType  ::class);
+        $formMapper->add('imageFile', FileType  ::class,['required'=>false]);
         $formMapper->add('commentaire', TextareaType::class);
     }
 

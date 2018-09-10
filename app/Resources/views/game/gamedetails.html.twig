@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
+    <h1> {{ game.name }}</h1>
+
+
+
+{% if game.video != null %}
+    <iframe width="1048" height="446"
+            src=" https://www.youtube.com/embed/{{ game.video |replace({'https://www.youtube.com/watch?v=':''})}}"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="iframeVideosGame"></iframe>
+{% endif %}
+
+<p class="comGame">{{ game.commentaire }} </p>
+        {% include '/inc/modal.html.twig' %}
+</div>
+
+{% endblock %}
