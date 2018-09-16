@@ -24,8 +24,14 @@ class ReservationType extends AbstractType
             ->add('lastname')
             ->add('mail')
             ->add('nombrepersonne')
-            ->add('salle')
-            ->add('reserver', SubmitType::class)
+            ->add('salle',EntityType::class,[
+                "class"=>"AppBundle:Salle",
+
+
+
+
+            ])
+
             ->add('game',EntityType::class,[
                 "class"=>"AppBundle:Game",
                 "attr"=>['class'=>'gameConsole',
@@ -34,6 +40,7 @@ class ReservationType extends AbstractType
                 "class"=>"AppBundle:Console",
                 "attr"=>['class'=>'newSelect']
             ])
+            ->add('reserver', SubmitType::class)
 
             ;
 

@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use AppBundle\Mailer\Mailer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Symfony\Component\HttpFoundation\Response;
 
 
 
@@ -34,48 +35,49 @@ class FormResaController extends Controller
     {
 
 
+
+
+
+
+
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
         $consoles = $em->getRepository('AppBundle:Console')->findAll();
-
-
-
-
 
         $reservation = new Reservation();
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
 
+     //   var_dump($request->request->all());
+
+
 
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+
+
+
             $em = $this->getDoctrine()->getManager();
+
+
+
             $em->persist($reservation);
 
             $em->flush();
 
+            $mailer->sendReservation($request->request->get('appbundle_reservation'));
 
-            $lastReservations = $em->getRepository('AppBundle:Reservation')->getLastReservation();
 
-            $data = [];
+            if ($mailer->sendReservation($request->request->get('appbundle_reservation'))){
 
-            foreach ($lastReservations as $lastReservation) {
-                /** @var TYPE_NAME $lastReservation */
-                array_push(
-                    $data,
-                    $lastReservation->getGame()->getName(),
-                    $lastReservation->getConsole()->getName(),
-                    $lastReservation->getSalle()->getName(),
-                    $lastReservation->getName(),
-                    $lastReservation->getLastName(),
-                    $lastReservation->getMail(),
-                    $lastReservation->getNombrepersonne()
-                );
+
+
+                return $this->redirectToRoute('homepage',["reservation"=>true]);
             }
-
-            $mailer->sendReservation($data);
-
 
 
 
@@ -83,12 +85,12 @@ class FormResaController extends Controller
 
         }
 
-
-        return $this->render('/inc/formresa.html.twig', [
+        return $this->render('/inc/modal.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games' => $games,
             'consoles'=>$consoles,
             'form' => $form->createView(),
+
 
         ]);
     }

@@ -27,16 +27,18 @@ class Mailer
 
 
         try {
+
+            //var_dump($data);
             $message = (new \Swift_Message('Reservation'))
                 ->setFrom($this->setFrom)
                 ->setTo('dimitri.macluckie@gmail.com')
+                ->setContentType("text/html")
                 ->setBody(
                     $this->template->render(
 
                         'mail/mailreservation.html.twig',
-                        $data
-                    ),
-                    'text/html'
+                         $data
+                    )
                 );
         } catch (\Twig_Error_Loader $e) {
         } catch (\Twig_Error_Runtime $e) {
@@ -44,5 +46,7 @@ class Mailer
         }
 
         $this->swift->send($message);
+
+        return true;
     }
 }

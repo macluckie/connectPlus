@@ -3,7 +3,19 @@
 
 <header>
 
+    {% if messages is defined %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
     {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
+
+
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -69,7 +81,9 @@
 
       </section>
 
-    {% include '/inc/modal.html.twig' %}
+
+
+    {{ render(controller('AppBundle\\Controller\\FormResaController:formAction')) }}
 
 
 {% endblock %}

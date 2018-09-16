@@ -48,19 +48,10 @@ $(document).ready(function(){
             },
             dataType: 'json',
 
-        })
-
-    })
+        })})
 
 
-
-
-
-
-
-
-
-
-
+//suppression des attributs values qui provoquent un pb de recupération des données dans le form symfony.
+    //$("select > option").removeAttr('value');
 })
 

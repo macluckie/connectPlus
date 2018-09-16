@@ -1,5 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>demande dereservation</h1>
+<h1>demande de reservation</h1>
+
+    <div class="mail">
+
+        <p>nom: {{ name }}</p>
+        <p>prenom: {{ lastname }}</p>
+        <p>jeux: {{ game }}</p>
+        <p>console: {{ console }}</p>
+        <p>nombre de personne: {{ nombrepersonne }}</p>
+        <p>salle: {{ salle }}</p>
+        <p>mail: {{ mail }}</p>
+        <p>Date: {{ date.date.day }}/{{ date.date.month }}/{{ date.date.year }}
+            à {{ date.time.hour }} heures.{{ date.time.minute }} min </p>
+    </div>
+
 
 {% endblock %}
