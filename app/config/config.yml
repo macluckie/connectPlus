@@ -81,6 +81,7 @@ fos_user:
 
 
 
+
 sonata_block:
     blocks:
         # enable the SonataAdminBundle block

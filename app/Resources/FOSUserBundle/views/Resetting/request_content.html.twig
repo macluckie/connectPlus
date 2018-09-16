@@ -1,5 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<!--
 <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
     <div>
         <label for="username">{{ 'resetting.request.username'|trans }}</label>
@@ -8,4 +9,38 @@
     <div>
         <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
     </div>
+</form> -->
+
+
+
+
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="post" class="fos_user_resetting_request">
+
+
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Reset password</label>
+            <input id="tab-2" type="hidden" name="tab" class="sign-up"><label visibility = "hidden" for="tab-2" class="tab" ></label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+
+                        <label for="Login" class="label">{{ 'resetting.request.username'|trans }}</label>
+                        <input type="text" id="username" name="username" required="required" class="input">
+                    </div>
+
+
+                    <div class="group">
+                        <input type="submit" class="button" value="{{ 'resetting.request.submit'|trans }}">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </form>
+
+

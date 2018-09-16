@@ -4,6 +4,7 @@
 
     <div class="container-fluid">
 
+
         {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
     <h1> {{ game.name }}</h1>
 
@@ -16,7 +17,9 @@
 {% endif %}
 
 <p class="comGame">{{ game.commentaire }} </p>
-        {% include '/inc/modal.html.twig' %}
+        {{ render(controller('AppBundle\\Controller\\FormResaController:formAction')) }}
 </div>
+
+
 
 {% endblock %}
