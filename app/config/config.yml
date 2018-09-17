@@ -102,4 +102,4 @@ vich_uploader:
 
 sonata_admin:
     title: Administration Connect+ #à personnaliser
-    title_logo: bundles/sonataadmin/connect+.jpg #à personnaliser
+    title_logo: /connect+.jpg #à personnaliser
