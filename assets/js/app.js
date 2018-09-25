@@ -33,25 +33,32 @@ $(document).ready(function(){
                         if ($(".newSelect").length == 1){
 
 
-                            $(".newSelect").remove();
+                          $(".newSelect").remove();
 
                         }
 
                         $("#appbundle_reservation").append('<select id="appbundle_reservation_console" name="appbundle_reservation[console]" class="newSelect form-control"></select>')
 
+                            
+              
+               for(i=0; i< data.length; i++){
+                      
+                   
+                    $(".newSelect").append('<option value="'+ data[i]['id'] +'" >'+ data[i]['console'] +' </option>');
+                
+ 
+            }
+             
+
+        }, dataType: 'json' 
+    
+        
+        })
 
 
-                for (let i = 0;i< data.length;i++){
-                    $(".newSelect").append('<option>'+data[i]+'</option>');
-                }
 
-            },
-            dataType: 'json',
-
-        })})
-
-
-//suppression des attributs values qui provoquent un pb de recupération des données dans le form symfony.
-    //$("select > option").removeAttr('value');
 })
+
+})
+
 

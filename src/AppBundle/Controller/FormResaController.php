@@ -34,12 +34,6 @@ class FormResaController extends Controller
     public function formAction(Request $request, Mailer $mailer)
     {
 
-
-
-
-
-
-
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
         $consoles = $em->getRepository('AppBundle:Console')->findAll();
@@ -48,10 +42,7 @@ class FormResaController extends Controller
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
 
-     //   var_dump($request->request->all());
-
-
-
+ 
 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,11 +56,33 @@ class FormResaController extends Controller
             $em->persist($reservation);
 
             $em->flush();
+            
+            
+            
 
-            $mailer->sendReservation($request->request->get('appbundle_reservation'));
+            $data= [];
+          
+                array_push($data, $form->getData()->getGame()->getName(),
+                                  $form->getData()->getDate()->format('H:i:s d-m-Y'),  
+                                  $form->getData()->getNombrepersonne(),  
+                                  $form->getData()->getSalle()->getName(),  
+                                  $form->getData()->getName(),
+                                  $form->getData()->getConsole()->getName(),
+                                  $form->getData()->getLastname(),  
+                                  $form->getData()->getMail());
+                                
+                
+         
+         
+
+            
 
 
-            if ($mailer->sendReservation($request->request->get('appbundle_reservation'))){
+
+
+
+
+            if ($mailer->sendReservation($data)){
 
 
 
@@ -103,16 +116,30 @@ class FormResaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $game = $em->getRepository('AppBundle:Game')->findOneByName($request->request->get('param'));
+        //$request->request->get('param')
 
             $console = [];
+            
+            
+            
 
-
+            
+          
         foreach ($game->getConsole()->toArray() as $gameConsole){
+                
+            
+            $console[] =['console'=> $gameConsole->getName(),
+                         'id'=>$gameConsole->getId(),
+                
+                
+                ];
 
-
-            array_push($console, $gameConsole->getName());
+           // array_push($console, $gameConsole->getName());
 
         }
+        
+        
+        
 
         return new JsonResponse($console);
 

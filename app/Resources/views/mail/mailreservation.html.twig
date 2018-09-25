@@ -2,18 +2,16 @@
 {% block body %}
 <h1>demande de reservation</h1>
 
-    <div class="mail">
+    <p> nom:  {{ data.4 }}</p>
+    <p> prenom: {{ data.6 }}</p>
+    <p> mail: {{ data.7 }}</p>
+    <p> jeux:  {{ data.0 }}</p>
+    <p> console:  {{ data.5 }} </p>
+    <p> horaire:  {{ data.1 }} </p>
 
-        <p>nom: {{ name }}</p>
-        <p>prenom: {{ lastname }}</p>
-        <p>jeux: {{ game }}</p>
-        <p>console: {{ console }}</p>
-        <p>nombre de personne: {{ nombrepersonne }}</p>
-        <p>salle: {{ salle }}</p>
-        <p>mail: {{ mail }}</p>
-        <p>Date: {{ date.date.day }}/{{ date.date.month }}/{{ date.date.year }}
-            à {{ date.time.hour }} heures.{{ date.time.minute }} min </p>
-    </div>
+
+
+
 
 
 {% endblock %}

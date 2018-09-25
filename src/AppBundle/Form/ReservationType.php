@@ -29,10 +29,6 @@ class ReservationType extends AbstractType
             ->add('nombrepersonne',IntegerType::class,["attr"=>["min"=>1, "max"=>10]])
             ->add('salle',EntityType::class,[
                 "class"=>"AppBundle:Salle",
-
-
-
-
             ])
 
             ->add('game',EntityType::class,[
@@ -42,6 +38,8 @@ class ReservationType extends AbstractType
             ->add('console',EntityType::class,[
                 "class"=>"AppBundle:Console",
                 "attr"=>['class'=>'newSelect']
+                
+                
             ])
             ->add('reserver', SubmitType::class)
 
