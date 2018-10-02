@@ -103,3 +103,28 @@ vich_uploader:
 sonata_admin:
     title: Administration Connect+ #à personnaliser
     title_logo: /connect+.jpg #à personnaliser
+    templates:
+     dashboard: sonataadmin.html.twig
+     knp_menu_template:  menusonata.html.twig
+    
+       
+                
+                
+              
+                
+                
+      
+    
+             
+    
+           
+                           
+            
+              
+        
+        
+
+
+
+
+

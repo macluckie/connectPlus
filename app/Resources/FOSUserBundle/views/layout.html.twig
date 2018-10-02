@@ -8,6 +8,8 @@
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
                   integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
                   crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Overpass" rel="stylesheet">
+
 
         {% endblock %}
     </head>
@@ -18,8 +20,7 @@
                 <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'deconnecter'|trans({}, 'FOSUserBundle') }}
                 </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'se connecter'|trans({}, 'FOSUserBundle') }}</a>
+           
             {% endif %}
         </div>
 
