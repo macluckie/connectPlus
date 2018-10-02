@@ -30,7 +30,7 @@ class Reservation
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \datetime
      *
      * @ORM\Column(name="date", type="datetime")
      */
@@ -82,6 +82,11 @@ class Reservation
 
 
 
+    public function __construct()
+    {
+        $this->date= new\DateTime();
+    }
+
 
 
     /**
@@ -97,7 +102,7 @@ class Reservation
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \Date $date
      *
      * @return Reservation
      */
@@ -111,7 +116,7 @@ class Reservation
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDate()
     {

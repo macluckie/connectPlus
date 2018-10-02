@@ -1,6 +1,8 @@
 #bodyFosUser{
 
     background-image:linear-gradient(white, black);
+    background-repeat: no-repeat;
+    max-height: 800px;
 
 }
 
@@ -19,6 +21,11 @@
     padding: 1px;
 }
 
+
+.checkMail{
+    margin: 2% 25% 25% 25%;
+    width: 40%;
+}
 
 
 /* test css from code pen */

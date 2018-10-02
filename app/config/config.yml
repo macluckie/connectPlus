@@ -60,12 +60,7 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
-swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
-    spool: { type: memory }
+
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
@@ -80,12 +75,11 @@ fos_user:
         form:
           type: AppBundle\Form\RegistrationType
 
+        confirmation:
+          enabled: true
 
-swiftmailer:
-    transport: '%mailer_transport%'
-    host:      '%mailer_host%'
-    username:  '%mailer_user%'
-    password:  '%mailer_password%'
+
+
 
 
 sonata_block:
@@ -94,8 +88,7 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
-framework:
-        translator: { fallbacks: ["%locale%"] }
+
 
 
 vich_uploader:
@@ -109,4 +102,29 @@ vich_uploader:
 
 sonata_admin:
     title: Administration Connect+ #à personnaliser
-    title_logo: bundles/sonataadmin/connect+.jpg #à personnaliser
+    title_logo: /connect+.jpg #à personnaliser
+    templates:
+     dashboard: sonataadmin.html.twig
+     knp_menu_template:  menusonata.html.twig
+    
+       
+                
+                
+              
+                
+                
+      
+    
+             
+    
+           
+                           
+            
+              
+        
+        
+
+
+
+
+

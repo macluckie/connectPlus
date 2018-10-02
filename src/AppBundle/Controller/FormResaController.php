@@ -19,10 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use AppBundle\Mailer\Mailer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-
-
-
-
+use Symfony\Component\HttpFoundation\Response;
 
 class FormResaController extends Controller
 {
@@ -33,62 +30,65 @@ class FormResaController extends Controller
     public function formAction(Request $request, Mailer $mailer)
     {
 
-
         $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
         $consoles = $em->getRepository('AppBundle:Console')->findAll();
-
-
-
-
 
         $reservation = new Reservation();
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
 
-
+ 
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+
+
             $em->persist($reservation);
 
             $em->flush();
+            
+            
+            
 
-
-            $lastReservations = $em->getRepository('AppBundle:Reservation')->getLastReservation();
-
-            $data = [];
-
-            foreach ($lastReservations as $lastReservation) {
-                /** @var TYPE_NAME $lastReservation */
+            $data= [];
+          
                 array_push(
                     $data,
-                    $lastReservation->getGame()->getName(),
-                    $lastReservation->getConsole()->getName(),
-                    $lastReservation->getSalle()->getName(),
-                    $lastReservation->getName(),
-                    $lastReservation->getLastName(),
-                    $lastReservation->getMail(),
-                    $lastReservation->getNombrepersonne()
+                    $form->getData()->getGame()->getName(),
+                    $form->getData()->getDate()->format('H:i:s d-m-Y'),
+                    $form->getData()->getNombrepersonne(),
+                    $form->getData()->getSalle()->getName(),
+                    $form->getData()->getName(),
+                    $form->getData()->getConsole()->getName(),
+                    $form->getData()->getLastname(),
+                    $form->getData()->getMail()
                 );
+                                
+                
+         
+         
+
+            
+
+
+
+
+
+
+            if ($mailer->sendReservation($data)) {
+                return $this->redirectToRoute('homepage', ["reservation"=>true]);
             }
-
-            $mailer->sendReservation($data);
-
-
-
-
-
-
         }
 
-
-        return $this->render('/inc/formresa.html.twig', [
+        return $this->render('/inc/modal.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games' => $games,
             'consoles'=>$consoles,
             'form' => $form->createView(),
+
 
         ]);
     }
@@ -98,27 +98,35 @@ class FormResaController extends Controller
      * @Route("/formajax", name="form_ajax")
      */
 
-    public function formAjaxAction(Request $request){
+    public function formAjaxAction(Request $request)
+    {
 
 
         $em = $this->getDoctrine()->getManager();
 
         $game = $em->getRepository('AppBundle:Game')->findOneByName($request->request->get('param'));
+        //$request->request->get('param')
 
             $console = [];
+            
+            
+            
 
+            
+          
+        foreach ($game->getConsole()->toArray() as $gameConsole) {
+            $console[] =['console'=> $gameConsole->getName(),
+                         'id'=>$gameConsole->getId(),
+                
+                
+                ];
 
-        foreach ($game->getConsole()->toArray() as $gameConsole){
-
-
-            array_push($console, $gameConsole->getName());
-
+           // array_push($console, $gameConsole->getName());
         }
+        
+        
+        
 
         return new JsonResponse($console);
-
     }
 }
-
-
-

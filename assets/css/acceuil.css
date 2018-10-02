@@ -1,26 +1,39 @@
 h1{
     text-align: center;
+    font-family: 'Old Standard TT', serif;
+
 }
 
 h2{
     text-align: center;
+    font-family: 'Old Standard TT', serif;
+
+}
+
+.nav-item{
+    margin-right: 40px;
 }
 
 .bodyConnectPlus{
+    font-family: 'Old Standard TT', serif;
     background-image:linear-gradient(white, black);
 }
 
 .descriptionconnect{
-    background-color: white;
+    color: white;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 50px;
     width: 80%;
+    font-family: 'Overpass', sans-serif;
+
 }
 
 .dernierjeux {
     display: flex;
     flex-direction: row ;
     justify-content: space-around;
+    font-family: 'Overpass', sans-serif;
+
 }
 
 .carousel{
@@ -33,6 +46,9 @@ h2{
     opacity: 0.7;
 }
 
+.navbar-nav{
+    margin-left: 80%;
+}
 
 .navbar-brand{
 
@@ -65,8 +81,16 @@ section.descriptionconnect hr{
 }
 
 .modalform{
+
     margin-top: 50px;
     margin-left: 50%;
+
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    /* margin-right: 90%; */
+    left: 660px;
+    top: 600px;
 
 }
 
@@ -96,6 +120,9 @@ section.descriptionconnect hr{
 
 .titrejeux{
     text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: white;
 
 }
 
