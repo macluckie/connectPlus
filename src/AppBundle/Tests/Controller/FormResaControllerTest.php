@@ -12,5 +12,4 @@ class FormResaControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/formResa');
     }
-
 }

@@ -55,9 +55,10 @@ class Salle
 
 
     public function __toString()
-    {   if($this->name==null){
-        return 'false';
-    }
+    {
+        if ($this->name==null) {
+            return 'false';
+        }
         return $this->name;
     }
 

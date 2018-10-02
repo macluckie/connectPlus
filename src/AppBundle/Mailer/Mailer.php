@@ -27,8 +27,6 @@ class Mailer
 
 
         try {
-
-
             $message = (new \Swift_Message('Reservation'))
                 ->setFrom($this->setFrom)
                 ->setTo('dimitri.macluckie@gmail.com')
@@ -36,7 +34,8 @@ class Mailer
                 ->setBody(
                     $this->template->render(
 
-                        'mail/mailreservation.html.twig',[
+                        'mail/mailreservation.html.twig',
+                        [
                          "data"=>$data]
                     )
                 );

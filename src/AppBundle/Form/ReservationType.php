@@ -22,20 +22,20 @@ class ReservationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date',DateTimeType::class)
+        $builder->add('date', DateTimeType::class)
             ->add('name')
             ->add('lastname')
-            ->add('mail',EmailType::class)
-            ->add('nombrepersonne',IntegerType::class,["attr"=>["min"=>1, "max"=>10]])
-            ->add('salle',EntityType::class,[
+            ->add('mail', EmailType::class)
+            ->add('nombrepersonne', IntegerType::class, ["attr"=>["min"=>1, "max"=>10]])
+            ->add('salle', EntityType::class, [
                 "class"=>"AppBundle:Salle",
             ])
 
-            ->add('game',EntityType::class,[
+            ->add('game', EntityType::class, [
                 "class"=>"AppBundle:Game",
                 "attr"=>['class'=>'gameConsole',
                 "value"=>'test']])
-            ->add('console',EntityType::class,[
+            ->add('console', EntityType::class, [
                 "class"=>"AppBundle:Console",
                 "attr"=>['class'=>'newSelect']
                 
@@ -44,11 +44,6 @@ class ReservationType extends AbstractType
             ->add('reserver', SubmitType::class)
 
             ;
-
-
-
-
-
     }/**
      * {@inheritdoc}
      */

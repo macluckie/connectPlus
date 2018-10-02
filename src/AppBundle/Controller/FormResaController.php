@@ -21,10 +21,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Component\HttpFoundation\Response;
 
-
-
-
-
 class FormResaController extends Controller
 {
     /**
@@ -46,9 +42,6 @@ class FormResaController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
-
             $em = $this->getDoctrine()->getManager();
 
 
@@ -62,14 +55,17 @@ class FormResaController extends Controller
 
             $data= [];
           
-                array_push($data, $form->getData()->getGame()->getName(),
-                                  $form->getData()->getDate()->format('H:i:s d-m-Y'),  
-                                  $form->getData()->getNombrepersonne(),  
-                                  $form->getData()->getSalle()->getName(),  
-                                  $form->getData()->getName(),
-                                  $form->getData()->getConsole()->getName(),
-                                  $form->getData()->getLastname(),  
-                                  $form->getData()->getMail());
+                array_push(
+                    $data,
+                    $form->getData()->getGame()->getName(),
+                    $form->getData()->getDate()->format('H:i:s d-m-Y'),
+                    $form->getData()->getNombrepersonne(),
+                    $form->getData()->getSalle()->getName(),
+                    $form->getData()->getName(),
+                    $form->getData()->getConsole()->getName(),
+                    $form->getData()->getLastname(),
+                    $form->getData()->getMail()
+                );
                                 
                 
          
@@ -82,17 +78,9 @@ class FormResaController extends Controller
 
 
 
-            if ($mailer->sendReservation($data)){
-
-
-
-                return $this->redirectToRoute('homepage',["reservation"=>true]);
+            if ($mailer->sendReservation($data)) {
+                return $this->redirectToRoute('homepage', ["reservation"=>true]);
             }
-
-
-
-
-
         }
 
         return $this->render('/inc/modal.html.twig', [
@@ -110,7 +98,8 @@ class FormResaController extends Controller
      * @Route("/formajax", name="form_ajax")
      */
 
-    public function formAjaxAction(Request $request){
+    public function formAjaxAction(Request $request)
+    {
 
 
         $em = $this->getDoctrine()->getManager();
@@ -125,9 +114,7 @@ class FormResaController extends Controller
 
             
           
-        foreach ($game->getConsole()->toArray() as $gameConsole){
-                
-            
+        foreach ($game->getConsole()->toArray() as $gameConsole) {
             $console[] =['console'=> $gameConsole->getName(),
                          'id'=>$gameConsole->getId(),
                 
@@ -135,16 +122,11 @@ class FormResaController extends Controller
                 ];
 
            // array_push($console, $gameConsole->getName());
-
         }
         
         
         
 
         return new JsonResponse($console);
-
     }
 }
-
-
-

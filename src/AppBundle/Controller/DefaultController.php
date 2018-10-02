@@ -20,7 +20,6 @@ use AppBundle\Mailer\Mailer;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 class DefaultController extends Controller
 {
     /**
@@ -33,10 +32,7 @@ class DefaultController extends Controller
 
 
         if ($request->query->get('reservation')==true) {
-
             $messages = $session->getFlashBag()->add('success', 'demande de reservation envoyée');
-
-
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -45,14 +41,13 @@ class DefaultController extends Controller
 
         $maxId = $em->getRepository('AppBundle:Game')->getMaxId();
 
-        foreach ($maxId as $value){
-
+        foreach ($maxId as $value) {
             $maxId= $value->getId();
         }
 
-        $ramdomPicture = $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
-        $ramdomPicture2= $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
-        $ramdomPicture3 = $em->getRepository('AppBundle:Game')->find(rand(1,$maxId));
+        $ramdomPicture = $em->getRepository('AppBundle:Game')->find(rand(1, $maxId));
+        $ramdomPicture2= $em->getRepository('AppBundle:Game')->find(rand(1, $maxId));
+        $ramdomPicture3 = $em->getRepository('AppBundle:Game')->find(rand(1, $maxId));
 
 
 
@@ -75,14 +70,15 @@ class DefaultController extends Controller
     }
 
 
-    public function navbarAction(){
+    public function navbarAction()
+    {
 
         $em = $this->getDoctrine()->getManager();
 
         $consoles = $em->getRepository('AppBundle:Console')->findAll();
         $games = $em->getRepository('AppBundle:Game')->getLastSevenGame();
 
-        return $this->render('/inc/navbar.html.twig',[
+        return $this->render('/inc/navbar.html.twig', [
 
 
             'consoles'=>$consoles,
@@ -90,10 +86,5 @@ class DefaultController extends Controller
 
 
         ]);
-
-
     }
-
-
-
 }
