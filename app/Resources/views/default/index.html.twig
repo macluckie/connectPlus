@@ -18,6 +18,7 @@
 
 
 
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -74,7 +75,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ game.name }}</h5>
                 <p class="card-text">{{ game.commentaire }}</p>
-                <a href="{{ path('gamedetails', {'id': game.id}) }}" class="btn btn-primary">Description</a>
+                <a href="{{ path('gamedetails', {'id': game.id}) }}" class="btn btn-info">Description</a>
               </div>
             </div>
           {% endfor %}

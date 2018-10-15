@@ -13,23 +13,39 @@ class Mailer
     private $template;
     private $swift;
     private $setFrom;
+    private $fosuser;
 
-
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $templating, $setFrom)
-    {
+    public function __construct(
+        \Swift_Mailer $mailer,
+        \Twig_Environment $templating,
+        $setFrom,
+        \FOS\UserBundle\Model\UserManagerInterface $fosuser
+    ) {
         $this->template = $templating;
         $this->swift = $mailer;
         $this->setFrom = $setFrom;
+        $this->fosuser = $fosuser;
     }
 
     public function sendReservation($data)
     {
 
 
+        $userManager = $this->fosuser;
+
+        $users = $userManager->findUsers();
+
+        $setTo;
+        foreach ($users as $user) {
+            if (in_array('ROLE_ADMIN', $user->getRoles())) {
+                $setTo =   $user->getEmail();
+            }
+        }
+
         try {
             $message = (new \Swift_Message('Reservation'))
                 ->setFrom($this->setFrom)
-                ->setTo('dimitri.macluckie@gmail.com')
+                ->setTo($setTo)
                 ->setContentType("text/html")
                 ->setBody(
                     $this->template->render(

@@ -13,16 +13,20 @@
                   crossorigin="anonymous">
             <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Overpass" rel="stylesheet">
 
-            
-        
+
+
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body class="bodyConnectPlus">
+      <div class="container-fluid">
         {% block body %}{% endblock %}
+        </div>
+
+
         {% block javascripts %}
-            
-           
+
+
         <script src="{{ asset('build/app.js') }}"
         ></script>
 

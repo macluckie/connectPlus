@@ -56,7 +56,6 @@ class DefaultController extends Controller
 
 
 
-
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games'=>$games,
@@ -86,5 +85,37 @@ class DefaultController extends Controller
 
 
         ]);
+    }
+
+    /**
+     * @Route("/gamebyconsole/{id}", name="gamebyconsole")
+     */
+    public function allGameConsoleAction(Request $request, Console $console)
+    {
+
+
+
+         $em = $this->getDoctrine()->getManager();
+
+
+
+        $gameConsole = [];
+
+
+        foreach ($console->getGame() as $value) {
+            $gameConsole[] = $value->getName();
+        }
+
+        $games = $console->getGame();
+
+
+         return $this->render('game/gamebyconsole.html.twig', [
+
+             "gameConsole"=>$gameConsole=(count($gameConsole) === 0) ? [] : $gameConsole,
+             "console"=>$console,
+             "games"=>$games,
+
+
+         ]);
     }
 }

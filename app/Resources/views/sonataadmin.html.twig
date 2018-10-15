@@ -144,8 +144,8 @@ file that was distributed with this source code.
                         {% endif %}
 
                     </a>
-                        
-                       
+
+
                 {% endspaceless %}
             {% endblock %}
             {% block sonata_nav %}
@@ -284,7 +284,7 @@ file that was distributed with this source code.
                                                 </div>
                                             {% endif %}
                                         {% endblock %}
-                                        
+
 
                                         <div class="navbar-collapse">
                                             {% if _tab_menu is not empty %}
@@ -331,6 +331,23 @@ file that was distributed with this source code.
 
                 <section class="content">
                     {% block sonata_admin_content %}
+
+                    <form  action="{{ path('dashboard')}}" method="post" class="formEmail">
+                      <label for="email" class="labelemail">modifier l'adresse email:</label>
+                      <input type="email" name="email" class="emailForm">
+
+                      <input type="submit" name="" value="modifier">
+                    </form>
+
+                    {% if messages is defined %}
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
 
                         {% block notice %}
                             {% include '@SonataCore/FlashMessage/render.html.twig' %}

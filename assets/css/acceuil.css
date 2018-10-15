@@ -17,6 +17,8 @@ h2{
 .bodyConnectPlus{
     font-family: 'Old Standard TT', serif;
     background-image:linear-gradient(white, black);
+    min-height: 900px;
+    background-repeat: no-repeat;
 }
 
 .descriptionconnect{
@@ -38,7 +40,7 @@ h2{
 
 .carousel{
     margin: auto;
-    width: 50%;
+    width: 80%;
     margin-top: 15px;
 }
 
@@ -131,4 +133,10 @@ a.dropdown-item{
 
     font-weight: bold;
 
+}
+
+.bodyConnectPlus > .container-fluid{
+
+  padding-left: 0px;
+  padding-right: 0px;
 }

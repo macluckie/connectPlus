@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    {{ render(controller('AppBundle\\Controller\\DefaultController::navbarAction')) }}
+
+
+    <h1 class="nomConsole">{{console.name}}</h1>
+
+<p class="comliste">liste des jeux:</p>
+    {% if gameConsole|length != 0  %}
+        <ul class="listeJeux">
+            {% for game in games %}
+
+                <li class="unJeux"><a href="{{ path('gamedetails', {'id': game.id}) }}" class="lienjeux">{{ game.name }}</a></li>
+
+            {% endfor %}
+
+
+        </ul>
+
+    {% else %}
+        <p>{{" pas de jeux sur cette plateforme"}}</p>
+
+    {% endif %}
+
+    {{ render(controller('AppBundle\\Controller\\FormResaController:formAction')) }}
+
+
+{% endblock %}
