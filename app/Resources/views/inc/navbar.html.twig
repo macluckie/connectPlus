@@ -36,7 +36,7 @@
                 </a>
                 <div class="dropdown-menu menuConsole" aria-labelledby="navbarDropdown">
                     {% for console in consoles %}
-                        <a class="dropdown-item" href="#">{{ console.name }}</a>
+                        <a class="dropdown-item" href="{{ path('gamebyconsole', {'id': console.id}) }}">{{ console.name }}</a>
                     {% endfor %}
 
 

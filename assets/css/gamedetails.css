@@ -1,5 +1,6 @@
 .iframeVideosGame{
     float: left;
+    margin-right: 10px;
 
 
 }
@@ -9,4 +10,3 @@
     color: white;
     height: 446px;
 }
-

@@ -71,6 +71,7 @@ fos_user:
         sender_name: "%mailer_user%"
     service:                               # this lines
         mailer: fos_user.mailer.twig_swift
+        
     registration:
         form:
           type: AppBundle\Form\RegistrationType
@@ -106,25 +107,3 @@ sonata_admin:
     templates:
      dashboard: sonataadmin.html.twig
      knp_menu_template:  menusonata.html.twig
-    
-       
-                
-                
-              
-                
-                
-      
-    
-             
-    
-           
-                           
-            
-              
-        
-        
-
-
-
-
-

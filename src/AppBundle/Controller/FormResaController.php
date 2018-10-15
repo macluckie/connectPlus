@@ -38,7 +38,7 @@ class FormResaController extends Controller
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
 
- 
+
 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,12 +49,12 @@ class FormResaController extends Controller
             $em->persist($reservation);
 
             $em->flush();
-            
-            
-            
+
+
+
 
             $data= [];
-          
+
                 array_push(
                     $data,
                     $form->getData()->getGame()->getName(),
@@ -66,12 +66,12 @@ class FormResaController extends Controller
                     $form->getData()->getLastname(),
                     $form->getData()->getMail()
                 );
-                                
-                
-         
-         
 
-            
+
+
+
+
+
 
 
 
@@ -108,24 +108,24 @@ class FormResaController extends Controller
         //$request->request->get('param')
 
             $console = [];
-            
-            
-            
 
-            
-          
+
+
+
+
+
         foreach ($game->getConsole()->toArray() as $gameConsole) {
             $console[] =['console'=> $gameConsole->getName(),
                          'id'=>$gameConsole->getId(),
-                
-                
+
+
                 ];
 
            // array_push($console, $gameConsole->getName());
         }
-        
-        
-        
+
+
+
 
         return new JsonResponse($console);
     }
