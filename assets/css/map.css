@@ -1,0 +1,27 @@
+.map{
+  margin-top: 0px;
+}
+
+.footer{
+  background-color: white;
+  margin-top: 15px;
+}
+
+.titleFooter{
+  color: white;
+  margin-top: 80px;
+}
+
+.contactFooter{
+
+  margin-left: 50%;
+  margin-right: 50%;
+  width: 20%;
+  color: BLACK;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.facebookLink{
+  color: black;
+}
