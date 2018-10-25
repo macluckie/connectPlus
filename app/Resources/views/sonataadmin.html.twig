@@ -34,6 +34,10 @@ file that was distributed with this source code.
     {% block stylesheets %}
         {% for stylesheet in sonata_admin.adminPool.getOption('stylesheets', []) %}
             <link rel="stylesheet" href="{{ asset(stylesheet) }}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+                  integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+                  crossorigin="anonymous">
+
         {% endfor %}
     {% endblock %}
 
@@ -150,7 +154,7 @@ file that was distributed with this source code.
             {% endblock %}
             {% block sonata_nav %}
                 <nav class="navbar navbar-static-top" role="navigation">
-                    <p class="boutondeconnexion" style="text-align: right; font-size: 1.3em;"><a  href="{{ path('fos_user_security_logout') }}"> deconnexion</a></p>
+                    <p class="boutondeconnexion" style="text-align: right; font-size: 1.3em;"><a  href="{{ path('fos_user_security_logout') }}" class="badge badge-danger"> Deconnexion</a></p>
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas"
                        role="button" title="{{ 'toggle_navigation'|trans({}, 'SonataAdminBundle') }}">
                         <span class="sr-only">{{ 'toggle_navigation'|trans({}, 'SonataAdminBundle') }}</span>
@@ -331,13 +335,23 @@ file that was distributed with this source code.
 
                 <section class="content">
                     {% block sonata_admin_content %}
+                      <div class="adminCommentaire">
+
 
                     <form  action="{{ path('dashboard')}}" method="post" class="formEmail">
-                      <label for="email" class="labelemail">modifier l'adresse email:</label>
+                      <label for="email" class="labelemail"><i class="fas fa-envelope">
+                      </i> modifier l'adresse email de reception des reservations:</label>
                       <input type="email" name="email" class="emailForm">
 
-                      <input type="submit" name="" value="modifier">
+                      <input type="submit"  value="modifier">
                     </form>
+
+
+                      <a href="{{path('editor')}}"  class="linkEditor">
+                         <i class="fas fa-home"></i> modification commentaire page d'acceuil</a>
+                    </div>
+
+
 
                     {% if messages is defined %}
                         {% for label, messages in app.flashes %}
@@ -395,6 +409,9 @@ file that was distributed with this source code.
         </script>
     {% endblock %}
 {% endif %}
+
+
+
 
 </body>
 </html>

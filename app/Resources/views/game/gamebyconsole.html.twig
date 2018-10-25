@@ -27,5 +27,5 @@
 
     {{ render(controller('AppBundle\\Controller\\FormResaController:formAction')) }}
 
-{% include 'inc/footer.html.twig' %}
+{{ render(controller('AppBundle\\Controller\\FooterController::getPhoneNumberAction')) }}
 {% endblock %}

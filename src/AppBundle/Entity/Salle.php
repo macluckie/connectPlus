@@ -49,7 +49,7 @@ class Salle
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="salle")
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="salle", cascade={"persist", "remove"})
      */
     private $reservations;
 

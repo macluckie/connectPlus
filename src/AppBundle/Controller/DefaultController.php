@@ -17,6 +17,8 @@ use AppBundle\Entity\Console;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use AppBundle\Mailer\Mailer;
+use AppBundle\Entity\Editor;
+
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -27,15 +29,24 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request, SessionInterface $session)
     {
+            $editor = new Editor();
+            $em = $this->getDoctrine()->getManager();
+            $getDetails = $em->getRepository('AppBundle:Editor')->find(1);
 
+          $dataEditor = $request->request->get('editor1');
 
+        if (isset($dataEditor)) {
+            $getDetails->setDetails($dataEditor);
 
+            $em->flush();
+        }
+
+          $details = $em->getRepository('AppBundle:Editor')->find(1)->getDetails();
 
         if ($request->query->get('reservation')==true) {
             $messages = $session->getFlashBag()->add('success', 'demande de reservation envoyée');
         }
 
-        $em = $this->getDoctrine()->getManager();
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
 
 
@@ -63,6 +74,8 @@ class DefaultController extends Controller
             'ramdomPicture2'=>$ramdomPicture2,
             'ramdomPicture3'=>$ramdomPicture3,
             'messages'=>$messages=(empty($messages)) ? 'null' : $messages,
+            'details'=>$details,
+            
 
 
         ));

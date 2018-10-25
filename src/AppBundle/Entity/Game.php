@@ -22,7 +22,7 @@ class Game
 
   /**
        *
-       * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game")
+       * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game", cascade={"persist", "remove"})
        * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
        */
     private $Reservation;
@@ -32,7 +32,7 @@ class Game
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Console", inversedBy="game", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Console", inversedBy="game", cascade={"persist"})
      * @ORM\JoinTable(name="Console_Game")
      */
     private $console;
