@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
 
 
 
