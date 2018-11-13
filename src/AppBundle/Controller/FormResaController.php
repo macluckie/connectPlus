@@ -44,14 +44,9 @@ class FormResaController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-
-
             $em->persist($reservation);
 
             $em->flush();
-
-
-
 
             $data= [];
 
@@ -66,17 +61,6 @@ class FormResaController extends Controller
                     $form->getData()->getLastname(),
                     $form->getData()->getMail()
                 );
-
-
-
-
-
-
-
-
-
-
-
 
             if ($mailer->sendReservation($data)) {
                 return $this->redirectToRoute('homepage', ["reservation"=>true]);
@@ -105,28 +89,14 @@ class FormResaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $game = $em->getRepository('AppBundle:Game')->findOneByName($request->request->get('param'));
-        //$request->request->get('param')
-
+       
             $console = [];
-
-
-
-
-
 
         foreach ($game->getConsole()->toArray() as $gameConsole) {
             $console[] =['console'=> $gameConsole->getName(),
                          'id'=>$gameConsole->getId(),
-
-
                 ];
-
-           // array_push($console, $gameConsole->getName());
         }
-
-
-
-
         return new JsonResponse($console);
     }
 }

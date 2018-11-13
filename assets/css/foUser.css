@@ -181,3 +181,21 @@ a{color:inherit;text-decoration:none}
 .foot-lnk{
     text-align:center;
 }
+
+.checkMail{
+        min-height: 327px;
+}
+
+
+
+.fos_user_resetting_reset{
+
+    width: 30%;
+    margin: auto;
+    min-height: 740px;
+}
+
+.fos_user_user_show{
+    min-height: 675px;
+    text-align: center;
+}

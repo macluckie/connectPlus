@@ -132,6 +132,17 @@ section.descriptionconnect hr{
 a.dropdown-item{
 
     font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+
+        .dropdown-item{
+
+    font-weight: bold;
+    font-size: 0.7em;
+
+}
+
 
 }
 
@@ -140,3 +151,4 @@ a.dropdown-item{
   padding-left: 0px;
   padding-right: 0px;
 }
+
