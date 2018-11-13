@@ -8,19 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Salle controller.
- *
- * @Route("salle")
- */
 class SalleController extends Controller
 {
-    /**
-     * Lists all salle entities.
-     *
-     * @Route("/", name="salle_index")
-     * @Method("GET")
-     */
+   
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -32,12 +22,6 @@ class SalleController extends Controller
         ));
     }
 
-    /**
-     * Creates a new salle entity.
-     *
-     * @Route("/new", name="salle_new")
-     * @Method({"GET", "POST"})
-     */
     public function newAction(Request $request)
     {
         $salle = new Salle();
@@ -58,12 +42,6 @@ class SalleController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a salle entity.
-     *
-     * @Route("/{id}", name="salle_show")
-     * @Method("GET")
-     */
     public function showAction(Salle $salle)
     {
         $deleteForm = $this->createDeleteForm($salle);
@@ -74,12 +52,7 @@ class SalleController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing salle entity.
-     *
-     * @Route("/{id}/edit", name="salle_edit")
-     * @Method({"GET", "POST"})
-     */
+    
     public function editAction(Request $request, Salle $salle)
     {
         $deleteForm = $this->createDeleteForm($salle);
@@ -99,12 +72,7 @@ class SalleController extends Controller
         ));
     }
 
-    /**
-     * Deletes a salle entity.
-     *
-     * @Route("/{id}", name="salle_delete")
-     * @Method("DELETE")
-     */
+    
     public function deleteAction(Request $request, Salle $salle)
     {
         $form = $this->createDeleteForm($salle);
@@ -119,13 +87,7 @@ class SalleController extends Controller
         return $this->redirectToRoute('salle_index');
     }
 
-    /**
-     * Creates a form to delete a salle entity.
-     *
-     * @param Salle $salle The salle entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
+   
     private function createDeleteForm(Salle $salle)
     {
         return $this->createFormBuilder()

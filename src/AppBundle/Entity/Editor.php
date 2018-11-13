@@ -33,9 +33,10 @@ class Editor
      * @var string
      *
      * @ORM\Column(name="phone", type="text",nullable=true)
-     *@Assert\NotBlank(message="obligatoire")
+     *@Assert\NotBlank(message=" Champ obligatoire")
      *@Assert\Length(min = 10 , max = 10, maxMessage = "merci de saisir un numéro de téléphone valide à 10 chiffres")
-     * @Assert\Regex(pattern = "/\d/",match = true, message = "merci de saisir un numéro de téléphone valide")
+     * @Assert\Regex(pattern = "/\d/",match = true,
+      message = "merci de saisir un numéro de téléphone valide à 10 chiffres")
      */
     private $phone;
 

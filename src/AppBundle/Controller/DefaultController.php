@@ -49,30 +49,29 @@ class DefaultController extends Controller
 
         $games = $em->getRepository('AppBundle:Game')->getLastGame();
 
+       
 
-        $maxId = $em->getRepository('AppBundle:Game')->getMaxId();
+       
+             $allGames = $em->getRepository('AppBundle:Game')->findAll();
 
-        foreach ($maxId as $value) {
-            $maxId= $value->getId();
+
+                $pictures = [];
+
+        foreach ($allGames as $param) {
+             $pictures[] = $param->getImageName();
         }
+          
 
-        $ramdomPicture = $em->getRepository('AppBundle:Game')->find(rand(1, $maxId));
-        $ramdomPicture2= $em->getRepository('AppBundle:Game')->find(rand(1, $maxId));
-        $ramdomPicture3 = $em->getRepository('AppBundle:Game')->find(rand(1, $maxId));
-
-
-
-
-
-
+            $pictureRamdom1 = $pictures[array_rand($pictures, 1)];
+            $pictureRamdom2 = $pictures[array_rand($pictures, 1)];
+            $pictureRamdom3 = $pictures[array_rand($pictures, 1)];
 
 
         return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'games'=>$games,
-            'ramdomPicture'=>$ramdomPicture,
-            'ramdomPicture2'=>$ramdomPicture2,
-            'ramdomPicture3'=>$ramdomPicture3,
+            'pictureRamdom1'=>$pictureRamdom1,
+            'pictureRamdom2'=>$pictureRamdom2,
+            'pictureRamdom3'=>$pictureRamdom3,
             'messages'=>$messages=(empty($messages)) ? 'null' : $messages,
             'details'=>$details,
             
