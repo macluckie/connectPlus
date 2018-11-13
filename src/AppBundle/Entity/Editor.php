@@ -36,7 +36,7 @@ class Editor
      *@Assert\NotBlank(message=" Champ obligatoire")
      *@Assert\Length(min = 10 , max = 10, maxMessage = "merci de saisir un numéro de téléphone valide à 10 chiffres")
      * @Assert\Regex(pattern = "/\d/",match = true,
-      message = "merci de saisir un numéro de téléphone valide à 10 chiffres")
+     * message = "merci de saisir un numéro de téléphone valide à 10 chiffres")
      */
     private $phone;
 
