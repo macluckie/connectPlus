@@ -1,47 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-        {% block stylesheets %}
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    {% block stylesheets %}
+    {% include "main-css.html.twig" %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('iconeconnect+.ico') }}" />
+</head>
 
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-                  integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-                  crossorigin="anonymous">
-            <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Overpass" rel="stylesheet">
-
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
-
-
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('iconeconnect+.ico') }}" />
-    </head>
-    <body class="bodyConnectPlus">
-      <div class="container-fluid">
+<body class="bodyConnectPlus">
+    <div class="container-fluid">
+        {% include 'default/navbar.html.twig' %}
         {% block body %}
-
-
-
-
+        
         {% endblock %}
-
-        </div>
-
-
-
-
-    </body>
-
-    
-        {% block javascripts %}
-
-
-        <script src="{{ asset('../../build/app.js') }}"
-        ></script>
-      
-
-        {% endblock %}
-
+        {% include 'default/footer.html.twig' %}
+    </div>
+</body>
+{% block javascripts %}
+{% include "main-js.html.twig" %}
+{% endblock %}
 </html>
