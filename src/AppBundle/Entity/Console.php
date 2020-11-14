@@ -21,11 +21,11 @@ class Console
     private $game;
 
 
-  /**
-    *
-    *@ORM\ManyToOne(targetEntity="Salle", inversedBy="Console")
-    *@ORM\JoinColumn(name="Salle_id", referencedColumnName="id")
-    */
+    /**
+     *
+     *@ORM\ManyToOne(targetEntity="Salle", inversedBy="Console")
+     *@ORM\JoinColumn(name="Salle_id", referencedColumnName="id")
+     */
     private $Salle;
 
 
@@ -53,7 +53,7 @@ class Console
 
     public function __toString()
     {
-        if ($this->getName()==null) {
+        if ($this->getName() == null) {
             return 'false';
         }
         return $this->name;

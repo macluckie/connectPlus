@@ -20,11 +20,11 @@ class Game
 {
 
 
-  /**
-       *
-       * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game", cascade={"persist", "remove"})
-       * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
-       */
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
+     */
     private $Reservation;
 
 
@@ -80,7 +80,7 @@ class Game
 
     public function __toString()
     {
-        if ($this->getName()==null) {
+        if ($this->getName() == null) {
             return 'False';
         }
         return $this->getName();
