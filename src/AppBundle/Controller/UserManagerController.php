@@ -19,10 +19,6 @@ class UserManagerController extends Controller
     public function emailAction(Request $request, SessionInterface $session, \Swift_Mailer $mailer)
     {
 
-
-
-
-
         if ($request->request->get('email') !== null) {
             $idUser = $this->getUser()->getId();
             $userManager = $this->get('fos_user.user_manager');

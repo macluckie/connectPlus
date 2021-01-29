@@ -18,26 +18,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Game
 {
-
-
-    /**
-     *
-     * @ORM\OneToOne(targetEntity="Reservation", inversedBy="Game", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
-     */
-    private $Reservation;
-
-
-
-
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Console", inversedBy="game", cascade={"persist"})
-     * @ORM\JoinTable(name="Console_Game")
-     */
-    private $console;
-
-
     /**
      * @var int
      *
@@ -47,14 +27,26 @@ class Game
      */
     private $id;
 
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="game")
+     *
+     */
+    private $reservation;
+
+    /**
+     *
+     *@ORM\ManyToOne(targetEntity="Console", inversedBy="game")
+     */
+    private $console;
+
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
-
 
     /**
      * @var string
@@ -285,29 +277,7 @@ class Game
         $this->console = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Set reservation
-     *
-     * @param \AppBundle\Entity\Reservation $reservation
-     *
-     * @return Game
-     */
-    public function setReservation(\AppBundle\Entity\Reservation $reservation = null)
-    {
-        $this->reservation = $reservation;
-
-        return $this;
-    }
-
-    /**
-     * Get reservation
-     *
-     * @return \AppBundle\Entity\Reservation
-     */
-    public function getReservation()
-    {
-        return $this->reservation;
-    }
+ 
 
     /**
      * Add console
@@ -389,5 +359,25 @@ class Game
     public function getVideo()
     {
         return $this->video;
+    }
+
+    /**
+     * Get the value of reservation
+     */
+    public function getReservation()
+    {
+        return $this->reservation;
+    }
+
+    /**
+     * Set the value of reservation
+     *
+     * @return  self
+     */
+    public function setReservation($reservation)
+    {
+        $this->reservation = $reservation;
+
+        return $this;
     }
 }

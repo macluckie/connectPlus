@@ -5,66 +5,50 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use AppBundle\Entity\Console;
-
-use AppBundle\Entity\Editor;
-
-
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use AppBundle\Entity\Service;
 
 class DefaultController extends Controller
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request, SessionInterface $session)
-    {      
-        $em = $this->getDoctrine()->getManager();
-        $getDetails = $em->getRepository('AppBundle:Editor')->find(1);
-        $dataEditor = $request->request->get('editor1');
-
-        if (isset($dataEditor)) {
-            $getDetails->setDetails($dataEditor);
-            $em->flush();
-        }
-
-        $details = $em->getRepository('AppBundle:Editor')->find(1)->getDetails();
+    {
+        $details =  $this->em->getRepository('AppBundle:Editor')->find(1)->getDetails();
         if ($request->query->get('reservation') == true) {
             $messages = $session->getFlashBag()->add('success', 'demande de reservation envoyée');
         }
-        $allGames = $em->getRepository('AppBundle:Game')->findAll();
+        $allGames =  $this->em->getRepository('AppBundle:Game')->findAll();
         $pictures = [];
         foreach ($allGames as $param) {
             $pictures[] = $param->getImageName();
-        }     
-
+        }
+        
         return $this->render('default/index.html.twig', array(
-            'games' => $allGames,
-            'arrayPicture' =>$pictures[array_rand($pictures)],          
-            'messages' => $messages = (empty($messages)) ? 'null' : $messages,
-            'details' => $details,
-        ));
+                    'games' => $allGames,
+                    'arrayPicture' =>$pictures[array_rand($pictures)],
+                    'messages' => $messages = (empty($messages)) ? 'null' : $messages,
+                    'services' => $this->em->getRepository(Service::class)->findAll(),
+                ));
     }
 
-    public function navbarAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $consoles = $em->getRepository('AppBundle:Console')->findAll();
-        $games = $em->getRepository('AppBundle:Game')->getLastSevenGame();
-
-        return $this->render('/inc/navbar.html.twig', [
-            'consoles' => $consoles,
-            'games' => $games,
-        ]);
-    }
+   
 
     /**
      * @Route("/gamebyconsole/{id}", name="gamebyconsole")
      */
     public function allGameConsoleAction(Request $request, Console $console)
     {
-        $em = $this->getDoctrine()->getManager();
         $gameConsole = [];
         foreach ($console->getGame() as $value) {
             $gameConsole[] = $value->getName();
@@ -74,8 +58,6 @@ class DefaultController extends Controller
             "gameConsole" => $gameConsole = (count($gameConsole) === 0) ? [] : $gameConsole,
             "console" => $console,
             "games" => $games,
-
-
         ]);
     }
 }

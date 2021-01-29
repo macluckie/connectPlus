@@ -25,3 +25,6 @@
 .idea
 /nbproject/private/
 .php~
+connect+.sql
+yarn.lock
+composer.lock

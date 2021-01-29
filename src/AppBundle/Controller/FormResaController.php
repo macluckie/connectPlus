@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FormResaController extends Controller
 {
     /**
-     * @Route("/form", name="form")
+     * @Route("/reservation", name="form")
      */
 
     public function formAction(Request $request, Mailer $mailer)
@@ -37,9 +37,6 @@ class FormResaController extends Controller
         $reservation = new Reservation();
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
-
-
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

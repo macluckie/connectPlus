@@ -29,6 +29,14 @@ class Editor
      */
     private $details;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="banniere", type="string",nullable=true,  length=100)
+     */
+    private $banniere;
+
     /**
      * @var string
      *
@@ -97,5 +105,29 @@ class Editor
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Get the value of banniere
+     *
+     * @return  string
+     */ 
+    public function getBanniere()
+    {
+        return $this->banniere;
+    }
+
+    /**
+     * Set the value of banniere
+     *
+     * @param  string  $banniere
+     *
+     * @return  self
+     */ 
+    public function setBanniere(string $banniere)
+    {
+        $this->banniere = $banniere;
+
+        return $this;
     }
 }

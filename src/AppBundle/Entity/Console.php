@@ -12,11 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Console
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Game", mappedBy="console")
+     *@ORM\OneToMany(targetEntity="Game", mappedBy="console")
      */
     private $game;
 
@@ -30,19 +38,11 @@ class Console
 
 
     /**
-     * One Product has Many Features.
+     * 
      * @ORM\OneToMany(targetEntity="Reservation", mappedBy="console")
      */
     private $reservations;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
      * @var string

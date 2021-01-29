@@ -12,14 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Reservation
 {
-
-  /**
-    *
-    * @ORM\OneToOne(targetEntity="Game", mappedBy="Reservation")
-    */
-    private $Game;
-
-
     /**
      * @var int
      *
@@ -28,6 +20,12 @@ class Reservation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+  /**
+    *
+    *@ORM\ManyToOne(targetEntity="Game", inversedBy="reservation")
+    */
+    private $game;
 
     /**
      * @var \datetime
@@ -46,14 +44,14 @@ class Reservation
     /**
      * Many Features have One Product.
      * @ORM\ManyToOne(targetEntity= "Console", inversedBy= "reservations")
-     * @ORM\JoinColumn(name="console_id", referencedColumnName="id")
+     *
      */
     private $console;
 
     /**
      * Many Features have One Product.
      * @ORM\ManyToOne(targetEntity="Salle", inversedBy="reservations")
-     * @ORM\JoinColumn(name="salle_id", referencedColumnName="id")
+     *
      */
     private $salle;
 
@@ -61,7 +59,7 @@ class Reservation
      * @var \string
      *
      * @ORM\Column(name="name", type="string",length=100)
-     */
+     */ 
     private $name;
 
 
@@ -147,29 +145,7 @@ class Reservation
         return $this->nombrepersonne;
     }
 
-    /**
-     * Set game
-     *
-     * @param \AppBundle\Entity\Game $game
-     *
-     * @return Reservation
-     */
-    public function setGame(\AppBundle\Entity\Game $game = null)
-    {
-        $this->Game = $game;
 
-        return $this;
-    }
-
-    /**
-     * Get game
-     *
-     * @return \AppBundle\Entity\Game
-     */
-    public function getGame()
-    {
-        return $this->Game;
-    }
 
     /**
      * Set console
@@ -289,5 +265,25 @@ class Reservation
     public function getMail()
     {
         return $this->mail;
+    }
+
+    /**
+     * Get the value of game
+     */
+    public function getGame()
+    {
+        return $this->game;
+    }
+
+    /**
+     * Set the value of game
+     *
+     * @return  self
+     */
+    public function setGame($game)
+    {
+        $this->game = $game;
+
+        return $this;
     }
 }

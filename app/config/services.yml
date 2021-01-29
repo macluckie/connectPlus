@@ -70,3 +70,22 @@ services:
       tags:
       - { name: sonata.admin, manager_type: orm, label: Salle }
       public: true
+
+    admin.Editor:
+      class: AppBundle\Admin\EditorAdmin
+      arguments: [~, AppBundle\Entity\Editor, ~]
+      calls:
+           - [setTemplate, [edit, 'EditorAdmin/edit.html.twig']]
+      tags:
+           - { name: sonata.admin, manager_type: orm, label: Editor }
+      public: true
+
+
+
+
+    admin.Service:
+      class: AppBundle\Admin\ServiceAdmin
+      arguments: [~, AppBundle\Entity\Service, ~]
+      tags:
+          - { name: sonata.admin, manager_type: orm, label: Service }
+      public: true  

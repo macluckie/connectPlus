@@ -1,0 +1,15 @@
+#header .logo img {
+    width: 10%;
+    overflow: hidden;
+    height: 76px;
+}
+
+#header{
+    height: 76px;
+}
+
+.logo{
+    width: 69%;
+    height: 85px;
+    color:black;
+}

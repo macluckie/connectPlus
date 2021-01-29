@@ -17,21 +17,21 @@ class GameController extends Controller
 {
 
 
-    /**
-     * Finds and displays a game entity.
-     *
-     * @Route("/{id}", name="gamedetails")
-     * @Method("GET")
-     */
-    public function showGameAction(Game $game)
-    {
-        $em = $this->getDoctrine()->getManager();
+    // /**
+    //  * Finds and displays a game entity.
+    //  *
+    //  * @Route("/{id}", name="gamedetails")
+    //  * @Method("GET")
+    //  */
+    // public function showGameAction(Game $game)
+    // {
+    //     $em = $this->getDoctrine()->getManager();
 
 
 
-        return $this->render('game/gamedetails.html.twig', array(
-            'game' => $game,
+    //     return $this->render('game/gamedetails.html.twig', array(
+    //         'game' => $game,
 
-        ));
-    }
+    //     ));
+    // }
 }
