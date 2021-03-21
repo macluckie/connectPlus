@@ -6,9 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Console;
+use AppBundle\Entity\Footer;
+use AppBundle\Entity\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use AppBundle\Entity\Service;
 
 class DefaultController extends Controller
 {
@@ -24,7 +25,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request, SessionInterface $session)
     {
-        $details =  $this->em->getRepository('AppBundle:Editor')->find(1)->getDetails();
+        // $details =  $this->em->getRepository('AppBundle:Editor')->find(1)->getDetails();
         if ($request->query->get('reservation') == true) {
             $messages = $session->getFlashBag()->add('success', 'demande de reservation envoyée');
         }
@@ -39,6 +40,7 @@ class DefaultController extends Controller
                     'arrayPicture' =>$pictures[array_rand($pictures)],
                     'messages' => $messages = (empty($messages)) ? 'null' : $messages,
                     'services' => $this->em->getRepository(Service::class)->findAll(),
+                    'footer'   => $this->em->getRepository(Footer::class)->findAll(),
                 ));
     }
 

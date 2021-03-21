@@ -9,13 +9,13 @@
         </div>
         <div class="row">
             {% for service in services %}
-            <div class="col-md-4">
+            <div class="col-md-4 service">
                 <div class="service-item">
                     <div class="icon">
-                        <img src="img/service_icon_1.png" alt="">
+                        <img src="template/img/service_icon_1.png" alt="">
                     </div>
                     <h4>{{service.title}}</h4>
-                    <p>{{service.details}}</p>
+                    <p class="details_service">{{service.details}}</p>
                 </div>
             </div>
 

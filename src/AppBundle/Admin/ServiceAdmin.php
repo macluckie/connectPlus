@@ -7,8 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use AppBundle\Entity\Service;
-
-
+use Exception;
 
 class ServiceAdmin extends AbstractAdmin
 {
@@ -36,10 +35,31 @@ class ServiceAdmin extends AbstractAdmin
 
     public function prePersist($service)
     {
-        echo '<pre>';
-      var_dump($this->getConfigurationPool()->getContainer()->get('doctrine')->getManager()->getRepository(Service::class)->findAll());
-      echo '<pre>';
-      die('stop');
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+        $services = $em->getRepository(Service::class)->findAll();
+        if (count($services) >= 3) 
+        {
+            throw new \Exception("impossible de créer plus de service");
+            
+        }
+
+        $this->checkLengthDetails($service);
+    }
+
+
+    public function preValidate($service)
+    {
+        
+       $this->checkLengthDetails($service);
+    }
+
+
+
+    private function checkLengthDetails(object $service)
+    {
+        if (strlen($service->getDetails()) >= 80) {
+          throw new \Exception("taille details trop grande");
+        }
     }
 
 }

@@ -13,3 +13,10 @@
     height: 85px;
     color:black;
 }
+
+nav{
+    height: 76px;
+    background-color: white;
+    z-index: 1000;
+    position: fixed !important;
+}

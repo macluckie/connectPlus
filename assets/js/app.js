@@ -1,6 +1,8 @@
 
 require('../css/app.scss');
 require('./banner.js');
+require('./services.js');
+
 require('bootstrap');
 
 // $(document).ready(function () {
