@@ -44,6 +44,32 @@ class DefaultController extends Controller
                 ));
     }
 
+
+    
+    /**
+     * @Route("/faq", name="faq")
+     */
+    public function faq()
+    {      
+        return $this->render('FAQ/index.html.twig',[ 'footer'   => $this->em->getRepository(Footer::class)->findAll(),]);
+    }
+
+
+    /**
+     * @Route("/about", name="about")
+     */
+    public function about()
+    {      
+        return $this->render('About/index.html.twig',[ 'footer'   => $this->em->getRepository(Footer::class)->findAll(),]);
+    }
+
+
+
+
+
+
+
+
    
 
     /**

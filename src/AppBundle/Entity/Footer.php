@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Footer
@@ -25,14 +27,26 @@ class Footer
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="name", type="string", length=50, nullable=true)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
+     * 
+     *  @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "votre email doit faire plus de  {{ limit }} charactères",
+     *      maxMessage = "votre email ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255,nullable=true)
+     * @ORM\Column(name="phone", type="string", length=15,nullable=true)
+     *  @Assert\Regex(pattern="/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/", message="Veuillez renseigner un numéro valide") 
      */
     private $phone;
 
@@ -40,6 +54,10 @@ class Footer
      * @var string
      *
      * @ORM\Column(name="addresse", type="string", length=255,nullable=true)
+     *   @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "votre addresse ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $addresse;
 
@@ -64,15 +82,23 @@ class Footer
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     *   @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "votre description ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $description;
 
 
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="contactInformation", type="string", length=255, nullable=true)
+     *   @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "votre contactInformation ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $contactInformation;
 
@@ -81,6 +107,10 @@ class Footer
      * @var string
      *
      * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
+     *    @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "votre facebook ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $facebook;
 
@@ -90,6 +120,10 @@ class Footer
      * @var string
      *
      * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+     *   @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "votre twitter ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $twitter;
 
@@ -98,6 +132,10 @@ class Footer
      * @var string
      *
      * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
+     *   @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "votre linkedin ne doit pas faire plus de  {{ limit }} charactères"
+     * )
      */
     private $linkedin;
       

@@ -16,7 +16,7 @@ class ServiceAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('title', TextType::class);
-        $formMapper->add('details', TextType::class);
+        $formMapper->add('details', TextType::class, ['attr'=>['maxlength' => 49]]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
