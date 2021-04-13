@@ -29,12 +29,8 @@ class Mailer
 
     public function sendReservation($data)
     {
-
-
         $userManager = $this->fosuser;
-
         $users = $userManager->findUsers();
-
         $setTo;
         foreach ($users as $user) {
             if (in_array('ROLE_ADMIN', $user->getRoles())) {

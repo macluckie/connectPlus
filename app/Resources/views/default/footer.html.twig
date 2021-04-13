@@ -4,14 +4,15 @@
             <div class="col-md-5">
                 <div class="about-veno">
                     <div class="logo">
-                        <img  src="{{asset('connect+.jpg')}}" width="100" alt="Venue Logo">
+                        <img loading="lazy"  src="{{asset('connect+.jpg')}}" width="100" alt="Venue Logo">
                     </div>
-                    <p>{{footer.0.description}}.</p>
+                    <p>{{footer.0.description}}<br>
+                    {{footer.0.description2}}</p>
                     <ul class="social-icons">
                         <li>
-                            <a href="{{footer.0.facebook}}"><i class="fa fa-facebook"></i></a>
-                            <a href="{{footer.0.twitter}}"><i class="fa fa-twitter"></i></a>
-                            <a href="{{footer.0.linkedin}}"><i class="fa fa-linkedin"></i></a>                         
+                            <a href="{{footer.0.facebook}}" target='_blank'><i class="fa fa-facebook"></i></a>
+                            <a href="{{footer.0.twitter}}" target='_blank'><i class="fa fa-twitter"></i></a>
+                            <a href="{{footer.0.linkedin}}" target='_blank'><i class="fa fa-linkedin"></i></a>                         
                         </li>
                     </ul>
                 </div>
@@ -36,11 +37,12 @@
                     <div class="footer-heading">
                         <h4 >Contact Information</h4>
                     </div>
-                    <p>{{footer.0.contactInformation}}</p>
+                    <p>{{footer.0.contactInformation}} <br>
+                    {{footer.0.contactInformation2}}</p>
                     <ul>
-                        <li><span>Phone:</span><a href="#">{{footer.0.phone}}</a></li>
-                        <li><span>Email:</span><a href="#">{{footer.0.email}}</a></li>
-                        <li><span>Address:</span><a href="#">{{footer.0.addresse}}</a></li>
+                        <li><span class='spanPhone'>Phone:</span><a href="#">{{footer.0.phone}}</a></li>
+                        <li><span class='spanEmail'>Email:</span><a href="#">{{footer.0.email}}</a></li>
+                        <li><span class="spanAddress">Address:</span><a href="#">{{footer.0.addresse}}</a></li>
                     </ul>
                 </div>
             </div>

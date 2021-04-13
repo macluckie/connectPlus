@@ -53,7 +53,7 @@ class Footer
     /**
      * @var string
      *
-     * @ORM\Column(name="addresse", type="string", length=255,nullable=true)
+     * @ORM\Column(name="addresse", type="string", length=50,nullable=true)
      *   @Assert\Length(
      *      max = 50,
      *      maxMessage = "votre addresse ne doit pas faire plus de  {{ limit }} charactères"
@@ -81,7 +81,7 @@ class Footer
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="string", length=50, nullable=true)
      *   @Assert\Length(
      *      max = 50,
      *      maxMessage = "votre description ne doit pas faire plus de  {{ limit }} charactères"
@@ -91,22 +91,47 @@ class Footer
 
 
 
+
     /**
      * @var string
      *
-     * @ORM\Column(name="contactInformation", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description2", type="string", length=50, nullable=true)
      *   @Assert\Length(
      *      max = 50,
+     *      maxMessage = "votre description ne doit pas faire plus de  {{ limit }} charactères"
+     * )
+     */
+    private $description2;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contactInformation", type="string", length=34, nullable=true)
+     *   @Assert\Length(
+     *      max = 34,
      *      maxMessage = "votre contactInformation ne doit pas faire plus de  {{ limit }} charactères"
      * )
      */
     private $contactInformation;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contactInformation2", type="string", length=100, nullable=true)
+     *   @Assert\Length(
+     *      max = 40,
+     *      maxMessage = "votre contactInformation2 ne doit pas faire plus de  {{ limit }} charactères"
+     * )
+     */
+    private $contactInformation2;
 
 
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
+     * @ORM\Column(name="facebook", type="string", length=50, nullable=true)
      *    @Assert\Length(
      *      max = 50,
      *      maxMessage = "votre facebook ne doit pas faire plus de  {{ limit }} charactères"
@@ -119,7 +144,7 @@ class Footer
     /**
      * @var string
      *
-     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+     * @ORM\Column(name="twitter", type="string", length=50, nullable=true)
      *   @Assert\Length(
      *      max = 50,
      *      maxMessage = "votre twitter ne doit pas faire plus de  {{ limit }} charactères"
@@ -131,7 +156,7 @@ class Footer
     /**
      * @var string
      *
-     * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
+     * @ORM\Column(name="linkedin", type="string", length=50, nullable=true)
      *   @Assert\Length(
      *      max = 50,
      *      maxMessage = "votre linkedin ne doit pas faire plus de  {{ limit }} charactères"
@@ -376,6 +401,54 @@ class Footer
     public function setContactInformation(string $contactInformation)
     {
         $this->contactInformation = $contactInformation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of description2
+     *
+     * @return  string
+     */ 
+    public function getDescription2()
+    {
+        return $this->description2;
+    }
+
+    /**
+     * Set the value of description2
+     *
+     * @param  string  $description2
+     *
+     * @return  self
+     */ 
+    public function setDescription2(string $description2)
+    {
+        $this->description2 = $description2;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of contactInformation2
+     *
+     * @return  string
+     */ 
+    public function getContactInformation2()
+    {
+        return $this->contactInformation2;
+    }
+
+    /**
+     * Set the value of contactInformation2
+     *
+     * @param  string  $contactInformation2
+     *
+     * @return  self
+     */ 
+    public function setContactInformation2(string $contactInformation2)
+    {
+        $this->contactInformation2 = $contactInformation2;
 
         return $this;
     }

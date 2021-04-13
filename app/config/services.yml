@@ -38,7 +38,10 @@ services:
         arguments:
             $setFrom: '%mailer_user%'
             
-
+    AppBundle\Service\ResizerPicture:
+        class: AppBundle\Service\ResizerPicture
+        arguments:
+           $projectDir: '%kernel.project_dir%'
 
 
 

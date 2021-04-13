@@ -1,10 +1,7 @@
-@media screen and (max-width: 640px) {
-  
-.facebookLink{
-
-	margin-left: 
-
-
-}
+footer .contact-info ul li span{
+	width: 60px;
 }
 
+footer .about-veno .logo{
+	margin-bottom: 10px;
+}

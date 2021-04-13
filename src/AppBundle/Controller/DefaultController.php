@@ -10,14 +10,18 @@ use AppBundle\Entity\Footer;
 use AppBundle\Entity\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use AppBundle\Service\ResizerPicture;
+use Cocur\Slugify\Slugify;
 
 class DefaultController extends Controller
 {
     private $em;
+    private $resizer;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em,ResizerPicture $resizer )
     {
         $this->em = $em;
+        $this->resizer = $resizer;
     }
 
     /**
@@ -25,16 +29,15 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request, SessionInterface $session)
     {
-        // $details =  $this->em->getRepository('AppBundle:Editor')->find(1)->getDetails();
         if ($request->query->get('reservation') == true) {
             $messages = $session->getFlashBag()->add('success', 'demande de reservation envoyée');
         }
         $allGames =  $this->em->getRepository('AppBundle:Game')->findAll();
+        $this->resizer->handlerImage($allGames,209,150);
         $pictures = [];
         foreach ($allGames as $param) {
             $pictures[] = $param->getImageName();
         }
-        
         return $this->render('default/index.html.twig', array(
                     'games' => $allGames,
                     'arrayPicture' =>$pictures[array_rand($pictures)],

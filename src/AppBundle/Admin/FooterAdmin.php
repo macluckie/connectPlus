@@ -16,20 +16,26 @@ class FooterAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('email', TextType::class, ['attr' => ['maxlength' => 50]],['required' => false]);
-        $formMapper->add('phone', TextType::class, ['attr' => ['maxlength' => 50]], ['required' => false]);
-        $formMapper->add('addresse', TextType::class,['attr' => ['maxlength' => 50]], ['required' => false]);
-        $formMapper->add('help', 'textarea', array('attr' => array('class' => 'ckeditor')), ['required' => false]);
-        $formMapper->add('AboutUs', 'textarea', array('attr' => array('class' => 'ckeditor')), ['required' => false]);
-        $formMapper->add('contactInformation', TextType::class, ['attr' => ['maxlength' => 50]], ['required' => false]);
-        $formMapper->add('facebook', TextType::class,['attr' => ['maxlength' => 50]], ['required' => false]);
-        $formMapper->add('twitter', TextType::class,  ['attr' => ['maxlength' => 50]],['required' => false]);
-        $formMapper->add('linkedin', TextType::class,['attr' => ['maxlength' => 50]], ['required' => false]);
+        $formMapper->add('email', TextType::class, ['attr' => ['maxlength' => 50],'required' => false] );
+        $formMapper->add('phone', TextType::class, ['attr' => ['maxlength' => 50], 'required' => false]);
+        $formMapper->add('addresse', TextType::class, ['attr' => ['maxlength' => 50], 'required' => false]);
+        $formMapper->add('help', 'textarea', array('attr' => array('class' => 'ckeditor'), 'required' => false));
+        $formMapper->add('AboutUs', 'textarea', array('attr' => array('class' => 'ckeditor'), 'required' => false));
+        $formMapper->add('contactInformation', TextType::class, ['attr' => ['maxlength' => 50], 'required' => false]);
+        $formMapper->add('contactInformation2', TextType::class, ['attr' => ['maxlength' => 50], 'required' => false]);
+        $formMapper->add('facebook', TextType::class, ['attr' => ['maxlength' => 50], 'required' => false]);
+        $formMapper->add('twitter', TextType::class,  ['attr' => ['maxlength' => 50], 'required' => false]);
+        $formMapper->add('linkedin', TextType::class, ['attr' => ['maxlength' => 50], 'required' => false]);
         $formMapper->add(
             'description',
             TextType::class,
-            ['attr' => ['maxlength' => 50]],
-            ['required' => false]
+            ['attr' => ['maxlength' => 50], 'required' => false]
+          
+        );
+        $formMapper->add(
+            'description2',
+            TextType::class,
+            ['attr' => ['maxlength' => 50], 'required' => false]
         );
     }
 
@@ -40,7 +46,9 @@ class FooterAdmin extends AbstractAdmin
         $datagridMapper->add('addresse');
         $datagridMapper->add('help');
         $datagridMapper->add('description');
+        $datagridMapper->add('description2');
         $datagridMapper->add('contactInformation');
+        $datagridMapper->add('contactInformation2');
         $datagridMapper->add('AboutUs');
         $datagridMapper->add('facebook');
         $datagridMapper->add('linkedin');
@@ -53,15 +61,17 @@ class FooterAdmin extends AbstractAdmin
         $listMapper->add('addresse');
         $listMapper->add('help');
         $listMapper->add('description');
+        $listMapper->add('description2');
         $listMapper->add('linkedin');
         $listMapper->add('facebook');
         $listMapper->add('AboutUs');
         $listMapper->add('contactInformation');
+        $listMapper->add('contactInformation2');
     }
 
     public function preUpdate($footer)
     {
-        $this->checkFooterData($footer,'Oups erreur de saisie', true);
+        $this->checkFooterData($footer, 'Oups erreur de saisie', true);
     }
 
     public function prePersist($footer)
@@ -70,7 +80,7 @@ class FooterAdmin extends AbstractAdmin
     }
 
 
-    private function checkFooterData($footer,$message,$update = false)
+    private function checkFooterData($footer, $message, $update = false)
     {
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
         $dataFooter = $em->getRepository(Footer::class)->findAll();
@@ -104,20 +114,14 @@ class FooterAdmin extends AbstractAdmin
             array_push($data, $footer->getLinkedin());
         }
 
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '<pre>';
-
-
         if ($update) {
             if (count($data) > 0) {
                 throw new \Exception($message);
             }
-        }
-        else{
+        } else {
             if (count($dataFooter) >= 1 || count($data) > 0) {
                 throw new \Exception($message);
-            }            
+            }
         }
     }
 }

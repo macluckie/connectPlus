@@ -3,39 +3,26 @@
   <div class="row">
       <div class="col-md-12">
           <div class="section-heading">
-              <h2>Les 3 meilleurs jeux</h2>
+              <h2>Services</h2>
           </div>
       </div> 
   </div> 
   <div class="row">
+        {% for service in services %}
       <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="featured-item">
               <div class="thumb">
-                  <img src="template/img/featured_item_1.jpg" alt="">
-                  <div class="overlay-content">
-                      <ul>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                      </ul>
-                  </div>
-                  <div class="date-content">
-                      <h6>28</h6>
-                      <span>August</span>
-                  </div>
+                  {% if service.imageName is null %}
+                  <img loading="lazy" src="template/img/featured_item_1.jpg" alt="">
+                  {% else %}
+                  <img src="{{asset('upload/resize'~service.imageName)}}" alt="">
+             
+                  {% endif %}
               </div>
               <div class="down-content">
-                  <h4>Lorem ipsum dolor</h4>
-                  <span>Category One</span>
-                  <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-                  <div class="row">
-                      <div class="col-md-6 first-button">
-                          <div class="text-button">
-                              <a href="#">Add to favorites</a>
-                          </div>
-                      </div>
+                  <h4>{{service.title}}</h4>                  
+                  <p>{{service.details}}<br>{{service.details2}}</p>
+                  <div class="row">                   
                       <div class="col-md-6">
                           <div class="text-button">
                               <a href="#">Continue Reading</a>
@@ -45,7 +32,8 @@
               </div>
           </div>
       </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+        {% endfor %}
+      <!-- <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="featured-item">
               <div class="thumb">
                   <img src="template/img/featured_item_2.jpg" alt="">
@@ -118,7 +106,7 @@
                   </div>
               </div>
           </div>
-      </div>
+      </div> -->
   </div>
 </div>
 </section>

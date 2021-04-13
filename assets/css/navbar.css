@@ -19,4 +19,18 @@ nav{
     background-color: white;
     z-index: 1000;
     position: fixed !important;
+    box-shadow: 10px 5px 5px gray;
 }
+
+#primary-nav li > .hourService:hover{
+    color: #5a764d !important ;
+}
+
+#primary-nav li > .HourGame:hover{
+    color: #5788aa  !important;
+}
+
+#primary-nav li > .ContactUs:hover{
+    color: #8b474c  !important;
+}
+

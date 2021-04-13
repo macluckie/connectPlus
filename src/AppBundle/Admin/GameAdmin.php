@@ -8,10 +8,8 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Entity\Reservation;
 use AppBundle\Entity\Console;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -30,8 +28,7 @@ class GameAdmin extends AbstractAdmin
         $formMapper->add('typegame', TextType::class);
         $formMapper->add('console', EntityType::class, array(
         'class' => Console::class,
-        'choice_label' => 'name',
-        'multiple' =>'true',
+        'choice_label' => 'name'
         ))
         ;
         $formMapper->add('imageFile', FileType  ::class, ['required'=>false]);

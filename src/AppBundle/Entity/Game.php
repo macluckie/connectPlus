@@ -313,6 +313,17 @@ class Game
         return $this->console;
     }
 
+
+    /**
+     * Get console
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function setConsole($console)
+    {
+        return $this->console = $console;
+    }
+
     /**
      * Set updatedAt.
      *
