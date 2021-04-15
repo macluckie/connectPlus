@@ -20,6 +20,7 @@ class DefaultController extends Controller
 
     public function __construct(EntityManagerInterface $em,ResizerPicture $resizer )
     {
+        dump($_ENV);
         $this->em = $em;
         $this->resizer = $resizer;
     }
