@@ -67,8 +67,8 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "test@gmail.com"
-        sender_name: "test App"
+        address: test@gmail.com
+        sender_name: test App
     service:                               # this lines
         mailer: fos_user.mailer.twig_swift
 
