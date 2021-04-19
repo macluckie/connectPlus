@@ -20,21 +20,3 @@ monolog:
         console:
             type: console
             process_psr_3_messages: false
-fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
-    user_class: AppBundle\Entity\User
-    from_email:
-        address: '%mailer_user%'
-        sender_name: test App
-    service:                               # this lines
-        mailer: fos_user.mailer.twig_swift
-
-    registration:
-        form:
-            type: AppBundle\Form\RegistrationType
-
-        confirmation:
-            enabled: true
-
-
