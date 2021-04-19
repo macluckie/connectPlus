@@ -20,7 +20,7 @@
         ]
     },
     "require": {
-        "address": "test",
+        "mailer_user": "test",
         "php": ">=5.5.9",
         "cocur/slugify": "3.0",
         "doctrine/doctrine-bundle": "^1.6",
